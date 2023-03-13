@@ -1,0 +1,25 @@
+.App{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.main_container{
+    width: 75%;
+    columns: 4 320px;
+    column-gap: 0.5em;
+}
+
+@media (min-width:800px){
+    .main_container{
+        max-width: 100%;
+        columns: 4 320px;
+    }
+}
+
+@media (max-width:860px){
+    .main_container{
+        max-width: 100%;
+        columns: 2 100px;   
+    }
+}
