@@ -20,6 +20,7 @@ export function Products(props) {
     <div className="product_container">
       <h1 className="name_product">{props.nameProduct}</h1>
       <img className="image" src={props.imageProduct} alt={props.idProduct} />
+      <div className="price_product">${props.priceProduct}</div>
         <div className="options">
             {shopping ? (
               <AiTwotoneShopping className="shopping cart-shoppin" onClick={handleShoppingClick} />
@@ -30,6 +31,7 @@ export function Products(props) {
               <AiOutlineHeart className="shopping liked-icon" onClick={handleLikeClick} />
             ) : (
               <AiFillHeart className="shopping like-icon" onClick={handleLikeClick} />
+              
             )}
         </div>
     </div>

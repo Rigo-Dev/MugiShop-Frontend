@@ -1,29 +1,69 @@
 import { React, useState, useEffect } from 'react'
 import { Products } from '../src/components/Products';
 import "../styleSheets/Home.css"
-import productsJSON from "../products.json";
 
 
 export function Home() { 
-
+  const [init, setInit] = useState(false)
   const [products, setProducts] = useState([]);
-  const [selectedCategories, setSelectedCategias] = useState("todos");
+  const [categories, setCategories] = useState([])
+  const [categoriesSelected, setCategoriesSelected] = useState('')
 
-  useEffect(() =>{
-    setProducts(productsJSON)
-  },[])
-  
-  const handleCategoriaChange = (val) =>{
-    setSelectedCategias(val.target.value)
+  const fetchCategories = async () => {
+    let url = "http://localhost:8000/api/categories"
+    const res = await fetch(url)
+    const data = await res.json()
+
+    setCategories(data)
   }
 
-  const filteredProduct = products.filter((p) =>{
-    if(selectedCategories === "todos"){
-      return true
-    }else{
-      return p.categories.toLowerCase() === selectedCategories
+  const changeCategories = async (e)=>{  
+    setCategoriesSelected(e.target.value)
+  }
+
+  const fetchProducts = async (name='', category='')=>{
+    let url = "http://localhost:8000/api/products"
+
+    // Validacion para saber si se filtrara el producto por nombre y/o categoria
+    if (name.length >= 1 && category.length >= 1 ) {
+    
+      url = `http://localhost:8000/api/products?name=${name}&category=${category}`
     }
-  })
+    else if(name.length >= 1  && category.length == 0 ){
+    
+      url = `http://localhost:8000/api/products?name=${name}`
+    
+    }else if(category.length >= 1  && name.length == 0 ){
+
+      url = `http://localhost:8000/api/products?category=${category}`
+    
+    }
+
+
+    
+    const res = await fetch(url)
+    const data = await res.json()
+
+    if (data.message !== undefined) {
+
+      setProducts([])
+
+      return
+    }
+
+    setProducts(data)
+  }
+
+  useEffect(() => {
+    if(init == false){
+      fetchCategories()
+      setInit(true)
+    }
+    
+    fetchProducts('', categoriesSelected)
+    
+  }, [categoriesSelected])
+  
 
   return (
   <div className='main_product_container'>
@@ -31,24 +71,24 @@ export function Home() {
       <div className='nav'>
         <nav>
             <label htmlFor="categorias">Gategoría:</label>
-            <select id="categorias" className='categorias' value={selectedCategories} onChange={handleCategoriaChange}>
-              <option value="todos" className='item'>Todos los productos</option>
-              <option value="juan"  className='item'>Juan</option>
-              <option value="nada"  className='item'>Nada</option>
-              <option value="casa"  className='item'>Casa</option>
-              <option value="carros"className='item'>Carros</option>
-              <option value="hola"  className='item'>Hola</option>
-              <option value="adios" className='item'>Adios</option>
+            <select id="categorias" className='categorias' onChange={e => changeCategories(e)}>
+              <option value="">Seleccionar productos</option>
+              {
+                categories.map(c=>(
+                  <option value={c.id} key={c.id}>{c.name}</option>
+                ))
+              }
             </select>
           </nav>
         </div>
       </div>
         <div className='product_home_container'>
-         {filteredProduct.map((p) => (
+         {products.map((p) => (
            <div className='columns' key={p.id}>
              <Products 
-             idProduct={p.id} 
-             imageProduct={p.image} 
+             idProduct={p.name}
+             priceProduct={p.price}
+            //  imageProduct={p.image} 
              />
            </div>
          ))}

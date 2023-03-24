@@ -1,3 +1,12 @@
+.product_home_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  columns: 4 220px;
+  gap: 20px;
+}
+
 .main_product_container{
   justify-content: center;
   align-items: center;
@@ -20,7 +29,6 @@
   border-radius: 20px;
   background-color: #E1E1E1;
   padding: 10px;
-  /* opacity: 0.5; */
 }
 
 label{
@@ -37,9 +45,4 @@ label{
   border: none;
   border-radius: 10px;
   margin-left: 1em;
-}
-
-.product_home_container{
-  columns: 4 220px;
-  gap: 10px;
 }
