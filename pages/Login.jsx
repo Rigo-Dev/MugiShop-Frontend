@@ -1,4 +1,4 @@
-import { React,useState } from "react";
+import { React } from "react";
 import "../styleSheets/Login.css"
 import { Nav } from "../src/components/Nav";
 import { NavLink } from "react-router-dom";
@@ -14,15 +14,13 @@ export function Login(){
             <h1 className="title">Login</h1>
            <div className="container_form">
               <form action="" className="form">
-                <input type="text" placeholder="Name" className="input_form"/>
-                <input type="password" placeholder="Password" className="input_form"/>
-                <div className="options_login">
-                  <button type="submit" className="Button_login">Log in</button>
-                  <div className="text"> 
-                    <h5>Your no't login?</h5>
+                <input type="text" placeholder="Name" className="input_form" required/>
+                <input type="password" placeholder="Password" className="input_form" required/>
+                  <div className="options_login"> 
+                    <button type="submit" className="button_login">Log in</button>
+                    <h5>You're not login?</h5>
                     <NavLink className={"redirect_singup"} to={'/singup'}>Sing In</NavLink>
                   </div>  
-                </div>
               </form>
             </div>
         </div>  

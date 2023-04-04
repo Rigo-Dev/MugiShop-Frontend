@@ -14,7 +14,7 @@
 .login{
   background-color: aliceblue;
   width: 300px;
-  height: 260px;
+  height: 270px;
   border-radius: 10px;
 }
 
@@ -51,7 +51,7 @@
   width: 100%;
 }
 
-.Button_login{
+.button_login{
   background-color: #ee7716;
   color: white;
   border: none;
