@@ -1,38 +1,32 @@
 import { React,useState } from "react";
 import "../styleSheets/Login.css"
+import { Nav } from "../src/components/Nav";
+import { NavLink } from "react-router-dom";
+import { NavDropDown } from "../src/components/NavDropDown";
 
 export function Login(){
-  const [login, setLogin] = useState(true)
-
-  const handleClick = () =>{
-    setLogin(!login)
-  }
   return(
     <div className="main_container_login">
+      <Nav/>
+      <NavDropDown/>
       <div className="container_login">
-          {login ? (
-           <div>
+        <div className="login">          
             <h1 className="title">Login</h1>
-            <form action="" className="form">
-              <input type="text" placeholder="Name" className="input_form"/>
-              <input type="password" placeholder="Password" className="input_form"/>
-              <h5 onClick={handleClick}>Your no't login? <p>Click Here</p></h5> 
-            </form>
-           </div>  
-          ): (
-           <div>
-            <h1 className="title">Register</h1>
-            <form action="" className="form">
-              <input type="text" placeholder="Name" className="input_form"/>
-              <input type="email" placeholder="Email" className="input_form"/>
-              <input type="password" placeholder="Password" className="input_form" />
-            </form>
-            <h5 onClick={handleClick}>Your login? <p>Click Here</p></h5>
-           </div>
-          )
-
-          }
+           <div className="container_form">
+              <form action="" className="form">
+                <input type="text" placeholder="Name" className="input_form"/>
+                <input type="password" placeholder="Password" className="input_form"/>
+                <div className="options_login">
+                  <button type="submit" className="Button_login">Log in</button>
+                  <div className="text"> 
+                    <h5>Your no't login?</h5>
+                    <NavLink className={"redirect_singup"} to={'/singup'}>Sing In</NavLink>
+                  </div>  
+                </div>
+              </form>
+            </div>
+        </div>  
       </div>
     </div>
   )
-}
+} 

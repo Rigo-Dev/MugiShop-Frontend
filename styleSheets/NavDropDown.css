@@ -1,0 +1,62 @@
+.container_dropdown_menu{
+  z-index: 50;
+  width: 100%;
+  position: fixed;
+  top: 13px;
+  left: 10px;
+}
+
+@media screen and (min-width: 820px){
+  .container_dropdown_menu{
+    width: 20px;
+  }
+}
+/* .container_open_menu{
+  position: absolute;
+} */
+
+  .open_menu{
+    visibility: hidden;
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  @media screen and (max-width: 800px){
+    .open_menu{
+      visibility: visible;
+    }
+  }
+  
+  .close_menu{
+    visibility: hidden;
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  /* .content_dropdown_menu{
+    background-color: aqua;
+    position:absolute; 
+    opacity:0.9;
+  } */
+
+  .container_close_menu{
+    visibility: hidden;
+    display: flex;
+    width: 95%;
+    height: 100vh;
+    background-color: rgb(93, 93, 93);
+  }
+
+  @media screen and (max-width: 800px){
+    .container_close_menu{
+      visibility: visible;
+    }
+    .close_menu{
+      visibility: visible;
+    }
+  }  
+
+  .logo_dropdown{
+    width: 3rem;
+    height: 3rem;
+  }
