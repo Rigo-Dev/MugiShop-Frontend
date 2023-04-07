@@ -1,0 +1,52 @@
+.container_nav{
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 200px;
+  margin-left: 2.5rem;
+}
+
+.container_logo{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px){
+  .container_logo{
+    margin: 0.3rem 0rem 0rem 0.7rem;
+  }
+}
+
+.logo{
+  width: 3rem;
+  height: 3rem;
+}
+
+ul{
+  display: flex;
+  align-items: flex-start;
+  list-style: none;
+  position: absolute;
+}
+
+.inactive{
+  color: white;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.active{
+  font-size: 1em;
+  text-decoration: none;
+  color: #ee7716;
+}
+
+li{
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 800px){
+  ul{
+    visibility: hidden;
+  }
+}
+
