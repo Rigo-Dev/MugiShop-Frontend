@@ -3,7 +3,7 @@ import "../../styleSheets/Products.css"
 import { useState } from "react";
 import { AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart, AiTwotoneShopping } from "react-icons/ai";
 
-export function Products(props) {
+export function Products({ nameProduct, imageProduct, idProduct, priceProduct }) {
   const [liked, setLiked] = useState(false);
 
   const handleLikeClick = () => {
@@ -16,12 +16,14 @@ export function Products(props) {
     setShopping(!shopping)
   }
 
+  const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
+
   return (
     <div className="product_container">
-      <h1 className="name_product">{props.nameProduct}</h1>
-      <img className="image" src={props.imageProduct} alt={props.idProduct} />
-      <div className="price_product">${props.priceProduct}</div>
-        <div className="options">
+      <h1 className="name_product">{nameProduct}</h1>
+      <img className="image" src={url + imageProduct} alt={idProduct} />
+      <div className="price_product">${priceProduct}</div>
+        <div className="options_product">
             {shopping ? (
               <AiTwotoneShopping className="shopping cart-shoppin" onClick={handleShoppingClick} />
             ): (

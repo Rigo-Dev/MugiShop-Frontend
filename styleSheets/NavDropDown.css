@@ -11,9 +11,6 @@
     width: 20px;
   }
 }
-/* .container_open_menu{
-  position: absolute;
-} */
 
   .open_menu{
     visibility: hidden;
@@ -32,12 +29,6 @@
     width: 3rem;
     height: 3rem;
   }
-  
-  /* .content_dropdown_menu{
-    background-color: aqua;
-    position:absolute; 
-    opacity:0.9;
-  } */
 
   .container_close_menu{
     visibility: hidden;
