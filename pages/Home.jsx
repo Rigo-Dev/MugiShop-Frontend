@@ -40,6 +40,10 @@ export function Home() {
       url = `${urlSearch}category=${category}`
     
     }
+      else if(name.length == 0 && category.length == 0){
+        
+        url = `${urlSearch}=${name}&category=${category}`
+      }
 
 
     
@@ -57,8 +61,7 @@ export function Home() {
   }
 
   useEffect(() => {
-      
-    fetchCategories()
+    fetchCategories() 
 
       fetchProducts('', categoriesSelected)
     
@@ -92,7 +95,7 @@ export function Home() {
                 <Products 
                 idProduct={p.name}
                 priceProduct={p.price}
-               //  imageProduct={p.image} 
+                imageProduct={p.image} 
                 />
               </div>
             ))}
