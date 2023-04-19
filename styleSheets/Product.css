@@ -1,5 +1,6 @@
 .product_container{
     position: relative;
+    margin: 1rem 0;
 }
 
 .image{
@@ -13,19 +14,32 @@
 }
 /*--------------------------------------------------*/
 .product_container:hover .price_product{
+  animation-duration: 1.4s;
+  animation-name: price;
   visibility: visible;
+}
+
+@keyframes price{
+  from{
+    margin-top: 5vh;
+    opacity: 0;
+  }
 }
 
 .price_product{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #070707;
+  font-size: 1.8em;
+  color: #ffffff;
   position: absolute;
   top: 50%;
   left: 45%;
+  transform: translate(-50%, -50%);
   visibility: hidden;
+  font-family: 'Times New Roman', Times, serif;
 }
+
 /*--------------------------------------------------*/
 
 
@@ -38,11 +52,11 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
-    background-color: rgb(103, 103, 103);
+    backdrop-filter: blur(o.7px);
+    background-color: rgba(103, 103, 103, 0.418);
     width: 100%;
     height: 100%;
     border-radius: 15px;
-    opacity: 0.4;
     color: #fff;
     position: absolute;
     top: 0;
