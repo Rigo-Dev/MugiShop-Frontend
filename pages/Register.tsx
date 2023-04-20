@@ -49,7 +49,7 @@ export function Register() {
   return (
     <div className="main_container_register">
       <Nav />
-      <NavDropDown />
+      {/* <NavDropDown /> */}
       <div className='container_register'>
         <div className="register">        
           <h1 className="title">Register</h1>
