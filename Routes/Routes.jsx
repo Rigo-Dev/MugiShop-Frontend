@@ -5,7 +5,7 @@ import { Register } from '../pages/Register';
 import { Login } from '../pages/Login';
 import { NotFound } from '../pages/NotFound';
 import { Perfil } from '../pages/Perfil';
-import { ConfirmarToken } from '../utils/ConfirmarToken';
+import { ConfirmToken } from '../utils/ConfirmToken';
 
 export function Rout() {
 return (
@@ -15,10 +15,10 @@ return (
                 <Route path='/' Component={Home}></Route>
                 <Route path='/singup' Component={Register}></Route>
                 <Route path='/login' Component={Login}></Route> 
-                {/* <Route path='*' Component={NotFound}></Route> */}
-                <Route element={<ConfirmarToken />}>
+                <Route element={<ConfirmToken />}>
                     <Route path='/perfil' Component={Perfil} ></Route>
                 </Route>
+                <Route path='*' Component={NotFound}></Route>
             </Routes>
         </BrowserRouter>    
     </div>

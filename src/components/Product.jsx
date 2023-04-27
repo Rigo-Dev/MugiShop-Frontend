@@ -3,7 +3,7 @@ import "../../styleSheets/Product.css"
 import { useState } from "react";
 import { AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart, AiTwotoneShopping } from "react-icons/ai";
 
-export function Products({ nameProduct, imageProduct, idProduct, priceProduct }) {
+export function Products({ nameProduct, imageProduct, idProduct, priceProduct,}) {
   const [shopping, setShopping] = useState(false)
 
   const handleShoppingClick = () =>{
@@ -25,7 +25,7 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct })
         <div className="options_product">
         <h4 className="price_product">${priceProduct}</h4>
             {shopping ? (
-              <AiTwotoneShopping className="shopping cart-shoppin" onClick={handleShoppingClick} />
+              <AiTwotoneShopping className="shopping cart-shoppin" onClick={handleShoppingClick}></AiTwotoneShopping>
             ): (
               <AiOutlineShoppingCart className="shopping cart-shopping" onClick={handleShoppingClick} />
             )}

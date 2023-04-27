@@ -1,35 +1,68 @@
-import { React,useEffect,useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { React,useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import Logo from "../../public/images/Logo.png"
 import "../../styleSheets/Nav.css"
-import { Login } from '../../pages/Login'
-
-
+import { AiOutlineSearch, AiFillHome, AiOutlineUserAdd } from "react-icons/ai";
+import {FiLogIn} from 'react-icons/fi'
 export function Nav() {
-  useEffect(() => {
-    if (sessionStorage.getItem('token') === 0) {
-      return <Login />
-    }
-  }, [])
-  
   return (
     <div className='main_nav_container'>
       <div className='container_nav'>
         <div className='container_logo'>
-          <NavLink to={"/"}>
-            <img className="logo" src={Logo} alt="we can't find logo" />
-          </NavLink>
+          <Link to="/">
+            <img className="logo" src={Logo}alt="we can't find logo" />
+          </Link>
         </div>
-        <ul>
+
+        <div className='search-container'>
+          <input type="text" className='search-input'/>
+
+          
+
+          <button type='submit' className='search-btn'>
+            <AiOutlineSearch className='search-icon'/>
+          </button>
+        </div>
+
+        <ul className='container-links'>
           <li>
-            <NavLink className={({isActive}) => isActive ? "active" : "inactive" } to={"/"}>Home</NavLink>
+            <NavLink className={({isActive}) => isActive ? "active" : "" } to={"/"}>Home</NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => isActive ? "active" : "inactive"}  to={"/login"}>Login</NavLink>
+            <NavLink className={({isActive}) => isActive ? "active" : ""}  to={"/login"}>Login</NavLink>
           </li>
+
           <li>
-            <NavLink className={({isActive}) => isActive ? "active" : "inactive"}  to={"/singup"}>Register</NavLink>
+            <NavLink className={({isActive}) => isActive ? "active" : ""}  to={"/singup"}>Register</NavLink>
           </li>
+        </ul>
+
+        <ul className='container-links-mobile'>
+          
+          <li>
+            
+            <NavLink className={({isActive}) => isActive ? "active" : "" } to={"/"}>
+              <AiFillHome />
+              Home
+            </NavLink>
+          </li>
+          
+          <li>
+            
+            <NavLink className={({isActive}) => isActive ? "active" : ""}  to={"/login"}>
+              <FiLogIn/>
+              Login
+              </NavLink>
+          </li>
+
+          <li>
+            
+            <NavLink className={({isActive}) => isActive ? "active" : ""}  to={"/singup"}>
+              <AiOutlineUserAdd/>
+              Register
+            </NavLink>
+          </li>
+        
         </ul>
       </div>
     </div>
@@ -37,3 +70,8 @@ export function Nav() {
   ) 
   
 }
+
+
+
+
+

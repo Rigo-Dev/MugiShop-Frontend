@@ -21,6 +21,7 @@
 
 .title{
   color: rebeccapurple;
+  margin-bottom: 1rem;
 }
 
 .container_form{
@@ -36,6 +37,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 5px;
 }
 
 

@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
  
 
-export function ConfirmarToken() {
+export function ConfirmToken() {
     const token = sessionStorage.getItem("token")
 
     console.log(token);

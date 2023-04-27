@@ -1,3 +1,23 @@
-body{
-    background-color: rgb(135, 135, 135);
+:root{
+    --primary:#586ae2;
+    --secondary: #ff5900;
+    --dark:#070035;
+    --complementary:#c252e1;
+    --light:#e0d9f6;
+    --very-light: #f3f3f3;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    max-width: 100%;
+}
+
+body{
+    background-color: var(--very-light);
+}
+
