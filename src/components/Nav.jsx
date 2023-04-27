@@ -1,10 +1,17 @@
-import { React,useState } from 'react'
+import { React,useEffect,useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Logo from "../../public/images/Logo.png"
 import "../../styleSheets/Nav.css"
+import { Login } from '../../pages/Login'
 
 
 export function Nav() {
+  useEffect(() => {
+    if (sessionStorage.getItem('token') === 0) {
+      return <Login />
+    }
+  }, [])
+  
   return (
     <div className='main_nav_container'>
       <div className='container_nav'>
