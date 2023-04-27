@@ -5,17 +5,12 @@ import "../../styleSheets/Nav.css"
 
 
 export function Nav() {
-  const [home, setHome] = useState(false)
-
-  const handleClick = () =>{
-    setHome(<NavLink to={"/"}>{!home}</NavLink>)
-  }
   return (
     <div className='main_nav_container'>
       <div className='container_nav'>
         <div className='container_logo'>
           <NavLink to={"/"}>
-            <img className="logo" src={Logo} onClick={handleClick} alt="we can't find logo" />
+            <img className="logo" src={Logo} alt="we can't find logo" />
           </NavLink>
         </div>
         <ul>
@@ -23,7 +18,10 @@ export function Nav() {
             <NavLink className={({isActive}) => isActive ? "active" : "inactive" } to={"/"}>Home</NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => isActive ? "active" : "inactive"}  to={"/login"}>login</NavLink>
+            <NavLink className={({isActive}) => isActive ? "active" : "inactive"}  to={"/login"}>Login</NavLink>
+          </li>
+          <li>
+            <NavLink className={({isActive}) => isActive ? "active" : "inactive"}  to={"/singup"}>Register</NavLink>
           </li>
         </ul>
       </div>

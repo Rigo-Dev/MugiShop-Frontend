@@ -12,7 +12,7 @@ export function Rout() {
             <Routes>
                 <Route path='/' Component={Home}></Route>
                 <Route path='/singup' Component={Register}></Route>
-                <Route path='/login' Component={Login}></Route>
+                <Route path='/login' Component={Login}></Route> 
                 <Route path='*' Component={NotFound}></Route>
             </Routes>
         </BrowserRouter>    

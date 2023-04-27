@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react'
-import { Products } from '../src/components/Products';
+import { Products } from '../src/components/Product';
 import "../styleSheets/Home.css"
 import { NavDropDown } from '../src/components/NavDropDown';
 import { Nav } from '../src/components/Nav';
@@ -40,12 +40,7 @@ export function Home() {
       url = `${urlSearch}category=${category}`
     
     }
-      else if(name.length == 0 && category.length == 0){
-        
-        url = `${urlSearch}=${name}&category=${category}`
-      }
-
-
+    
     
     const res = await fetch(url)
     const data = await res.json()
