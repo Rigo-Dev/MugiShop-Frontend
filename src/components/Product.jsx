@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart, AiTwotoneShopping } from "react-icons/ai";
 
 export function Products({ nameProduct, imageProduct, idProduct, priceProduct,}) {
+  {/*//!ESTO ES PARA CAMBIAR DE LOGO ENTRE EL DE COMPRA Y EL DE FAVORITO*/}
   const [shopping, setShopping] = useState(false)
 
   const handleShoppingClick = () =>{
@@ -15,15 +16,19 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct,})
   const handleLikeClick = () => {
     setLiked(!liked);
   };
+  {/*//!---------------------------------------------------------------*/}
+
 
   const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
 
   return (
     <div className="product_container">
+      {/*//!LAS PALABRAS ENTRE {} SON LAS QUE USO PARA DARLE INFORMACION Y MOSTRAR LA INFORMACION EN EL LUGAR QUE QUIERO EN EL HOME*/}
       <h1 className="name_product">{nameProduct}</h1>
       <img className="image" src={url + imageProduct} alt={idProduct} />
         <div className="options_product">
         <h4 className="price_product">${priceProduct}</h4>
+      {/*//!-----------------------------------------------------------------------------------------------------------------------*/}
             {shopping ? (
               <AiTwotoneShopping className="shopping cart-shoppin" onClick={handleShoppingClick}></AiTwotoneShopping>
             ): (
