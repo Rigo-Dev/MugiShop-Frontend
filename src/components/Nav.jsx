@@ -1,4 +1,4 @@
-import { React,useState,useEffect } from 'react'
+import { React } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Logo from "../../public/images/Logo.png"
 import "../../styleSheets/Nav.css"
@@ -6,7 +6,15 @@ import { AiOutlineSearch, AiFillHome, AiOutlineUserAdd } from "react-icons/ai";
 import {FiLogIn} from 'react-icons/fi'
 
 
-export function Nav() {
+export function Nav({ setProducts }) {
+
+  const handleChange = async (e) =>{
+    const url = await fetch(`http://localhost:8000/api/products?name=${e.target.value}`)
+    const data  = await url.json()
+  
+    setProducts(data)
+    }
+
   return (
     <div className='main_nav_container'>
       <div className='container_nav'>
@@ -20,7 +28,7 @@ export function Nav() {
         { /* //! ESTE ES LOGO EL CUAL NAVEGA HACIA EL HOME */}
 
         <div className='search-container'>
-          <input type="text" id='category' className='search-input'/>
+          <input type="text" id='category' className='search-input' onChange={handleChange}/>
           <button type='submit' className='search-btn'>
             <AiOutlineSearch className='search-icon'/>
           </button>
@@ -76,7 +84,4 @@ export function Nav() {
   ) 
   
 }
-
-
-
 

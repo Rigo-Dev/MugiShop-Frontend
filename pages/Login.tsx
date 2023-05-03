@@ -3,8 +3,8 @@ import "../styleSheets/Login.css"
 import { useForm } from 'react-hook-form'
 import { ZodType, z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Nav } from '../src/components/Nav'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Nav } from '../src/components/Nav'
 
 export function Login() {
     const navigate = useNavigate()

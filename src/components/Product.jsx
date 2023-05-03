@@ -1,9 +1,10 @@
 import React from "react";
 import "../../styleSheets/Product.css"
 import { useState } from "react";
-import { AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart, AiTwotoneShopping } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiFillEye, AiTwotoneShopping } from "react-icons/ai";
+import { AddProduct } from "../../utils/CartFunctions";
 
-export function Products({ nameProduct, imageProduct, idProduct, priceProduct,}) {
+export function Products({ nameProduct, imageProduct, idProduct, priceProduct }) {
   {/*//!ESTO ES PARA CAMBIAR DE LOGO ENTRE EL DE COMPRA Y EL DE FAVORITO*/}
   const [shopping, setShopping] = useState(false)
 
@@ -32,14 +33,9 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct,})
             {shopping ? (
               <AiTwotoneShopping className="shopping cart-shoppin" onClick={handleShoppingClick}></AiTwotoneShopping>
             ): (
-              <AiOutlineShoppingCart className="shopping cart-shopping" onClick={handleShoppingClick} />
+              <AiOutlineShoppingCart className="shopping cart-shopping"  onClick={ ()=>{handleShoppingClick(), AddProduct(idProduct)}} />
             )}
-            {liked ? (
-              <AiOutlineHeart className="shopping liked-icon" onClick={handleLikeClick} />
-            ) : (
-              <AiFillHeart className="shopping like-icon" onClick={handleLikeClick} />
-              
-            )}
+              <AiFillEye className="shopping liked-icon" onClick={handleLikeClick} />
         </div>
     </div>
   );

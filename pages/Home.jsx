@@ -2,8 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { Products } from '../src/components/Product';
 import "../styleSheets/Home.css"
 import { Nav } from '../src/components/Nav';
-import { AiOutlineShoppingCart } from "react-icons/ai"
-import { BsFillCartCheckFill } from "react-icons/bs"
+import { AiOutlineShoppingCart, } from "react-icons/ai"
 
 
 export function Home() { 
@@ -17,8 +16,6 @@ const VisibleCart = () =>{
     setCart(!cart)
   }
 }
-
-
 
 {/* //! ESTA PARTE HACE LA PETICION HACIA EL BACKEND */}
 const Fechtproduct = async () =>{
@@ -41,9 +38,7 @@ VisibleCart()
 
   return (
   <div className='main_product_container'>
-    <>
-      <Nav/>
-    </>
+          <Nav setProducts={setProducts}/>       
            <div className='container_cart' >
               <AiOutlineShoppingCart className='CartVisible Cart'/>
           </div>

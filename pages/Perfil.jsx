@@ -4,31 +4,6 @@ import { Nav } from '../src/components/Nav'
 
 
 export function Perfil() {
-  // const token = sessionStorage.getItem("token")
-  // const info = {
-  //   id: 19,
-  //   product: "Diaz",
-  //   product_id: 1,
-  //   product_img: "asdk"
-  // }
-
-  // const handleSelected = async (e) =>{
-  //   const res = await fetch("http://localhost:8000/api/cart", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": info
-  //     },
-  //     body: JSON.stringify(token)
-  //   })
-  //   const data = await res.json()
-  //   console.log(data, info, token);
-  // }
-
-  // useEffect(() => {
-  //   handleSelected()
-  // }, [])
-  
-
   return (
     <div className="main_container_perfil">
     <>
