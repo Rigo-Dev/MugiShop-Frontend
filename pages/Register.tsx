@@ -4,17 +4,21 @@ import { ZodType, z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Nav } from '../src/components/Nav'
-import { NavDropDown } from '../src/components/NavDropDown'
 import { NavLink } from 'react-router-dom'
 
 export function Register() {
 
+  {/* //!ESTO DEFINE LOS TIPOS DE DATOS QUE SE PUEDEN INGRESAR  */}
     type FormData = {
         first_name: string,
         last_name: string,
         email: string,
         password: string,
     }
+  {/* //!-------------------------------------------------------*/}
+  
+
+  {/* //!ESTA PARTE LO QUE HACE ES PONER LAS CONDICIONES QUE DEBE CUMPLIR CADA INPUT*/}
 
     const schema: ZodType<FormData> = z.object({
         first_name: z.string(),
@@ -22,10 +26,15 @@ export function Register() {
         email: z.string().email(),
         password: z.string().min(8).max(100)
     })
+  {/* //!------------------------------------------------------------------------------*/}
 
 
+  {/*//!ESTA PARTE ES LA QUE CONTROLA LOS ERRORES DE CADA INPUT (MIRA DEBAJO DE LOS INPUTS ESTOS DICEN QUE TIPO DE ERROR SE DEBE MOSTRAR EN CADA CASO)*/}
     const {register, handleSubmit, formState: { errors }} = useForm<FormData>({resolver: zodResolver(schema)})
+  {/*//!---------------------------------------------------------------------------------------------------------------------------------*/}
 
+
+  {/*//!ESTA PARTE SE ENCARGA DE MANDAR LA DATA A LA BASE DE DATOS LUEGO DE CONFIRMAR QUE SEAN VALIDOS*/}
     async function submitData(data: FormData){
         const res = await fetch("http://localhost:8000/api/register", {
           method: 'POST',
@@ -45,18 +54,23 @@ export function Register() {
         }
       
     } 
+  {/*//!--------------------------------------------------------------------------------------------- */}
 
   return (
     <div className="main_container_register">
       <Nav />
-      {/* <NavDropDown /> */}
       <div className='container_register'>
         <div className="register">        
           <h1 className="title">Register</h1>
           <div className="container_form">
             <form action="" className='form' onSubmit={handleSubmit(submitData)}>
-                <input type="text" className='input_form' placeholder='name' {...register("first_name")}/>
+                {/*//!LO QUE DICE HACE ....register ES MONITOREAR LOS CAMBIOS EN CADA INPUT (MIRA EL SCHEMA)*/}
+                <input type="text" className='input_form'  placeholder='name' {...register("first_name")}/>
+                {/*//!------------------------------------------------------------------------------------*/}
+
+                {/*//!ESTA ES LA QUE MUESTRA EL ERROR*/}
                 {errors.first_name && <span>{errors.first_name.message}</span>}
+                {/*//!------------------------------------------------------------------------------------*/}
                 <input type="text" className='input_form' placeholder='last Name' {...register("last_name")}/>
                 {errors.last_name && <span>{errors.last_name.message}</span>}
                 <input type="text" className='input_form' placeholder='email' {...register("email")}/>

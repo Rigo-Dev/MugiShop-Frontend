@@ -38,8 +38,8 @@
   font-size: 1.1em;
   border: none;
   background-color: var(--light);
-  border-radius: 999px;
   outline: none;
+  border-radius: 999px;
 }
 
 .search-container .search-btn{

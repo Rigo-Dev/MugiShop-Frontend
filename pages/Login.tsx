@@ -3,9 +3,8 @@ import "../styleSheets/Login.css"
 import { useForm } from 'react-hook-form'
 import { ZodType, z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Nav } from '../src/components/Nav'
-import { NavDropDown } from '../src/components/NavDropDown'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Nav } from '../src/components/Nav'
 
 export function Login() {
     const navigate = useNavigate()
@@ -38,7 +37,6 @@ export function Login() {
 
         if(userData.access_token){
             navigate(`/`)
-            console.log("Logeado");
             sessionStorage.setItem("token", userData.access_token)
         }
     }
@@ -47,7 +45,6 @@ export function Login() {
   return (
     <div className="main_container_login">
         <Nav/>
-        <NavDropDown/>
         <div className="container_login">
         <div className="login">  
             <h1 className="title">Login</h1>
