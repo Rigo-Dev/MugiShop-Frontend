@@ -4,10 +4,10 @@ import { ZodType, z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Nav } from '../src/components/Nav'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export function Register() {
-
+  const navigate = useNavigate()
   {/* //!ESTO DEFINE LOS TIPOS DE DATOS QUE SE PUEDEN INGRESAR  */}
     type FormData = {
         first_name: string,
@@ -50,6 +50,7 @@ export function Register() {
 
         if (UserData.access_token) {
             console.log("Registrado");
+            navigate('/')
             sessionStorage.setItem("token", UserData.access_token)
         }
       
