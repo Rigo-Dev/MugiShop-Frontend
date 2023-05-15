@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../public/images/Logo.png";
 import "../../styleSheets/Nav.css";
-import { AiOutlineSearch, AiFillHome, AiOutlineUserAdd, AiOutlineShoppingCart, } from "react-icons/ai";
+import { AiOutlineSearch, AiFillHome, AiOutlineUserAdd, AiOutlineShoppingCart, AiOutlineUser} from "react-icons/ai";
 import { FiLogIn } from "react-icons/fi";
 import CarritoDeCompras from "./Cart";
 
@@ -96,37 +96,49 @@ export function Nav({ setProducts, isActive }) {
 
 
           {/* //! MENU MOBILE */}
-          <ul className="container-links-mobile">
+          {login ? (
+            <ul className="container-links-mobile">
             <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? "active" : "")}
-                to={"/"}
-              >
+              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to={"/"}>
                 <AiFillHome />
                 Home
               </NavLink>
             </li>
 
             <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? "active" : "")}
-                to={"/login"}
-              >
+              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to={"/profile"}>
+                <AiOutlineUser/>
+                   Perfil
+                </NavLink>
+            </li>
+
+            <li className="cart-mobile">
+                <AiOutlineShoppingCart className="cart-icon"  onClick={() => openCart()} /><p>shopping</p>
+            </li>
+          </ul>
+          ):(
+          <ul className="container-links-mobile">
+            <li>
+              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to={"/"}>
+                <AiFillHome />
+                Home
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to={"/login"}>
                 <FiLogIn />
                 Login
               </NavLink>
             </li>
 
             <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? "active" : "")}
-                to={"/singup"}
-              >
-                <AiOutlineUserAdd />
-                Register
-              </NavLink>
+              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to={"/singup"}>
+                <AiOutlineUserAdd />Register
+              </NavLink>    
             </li>
           </ul>
+          )}
           {/* //! ----------------------------------- */}
         </div>
       </nav>

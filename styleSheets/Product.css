@@ -102,21 +102,37 @@
 /***************************************************/
 
 /*!*****************************! */
-.liked-icon:hover {
-    animation-duration: 3s;
-    transform: scale(1.2);
-    color: rgb(28, 38, 112);
+.view-image{
+  cursor: pointer;
+  font-size: 2rem;
+  margin-bottom: 1em;
 }
+
   
-.liked-icon {
-    color: rgb(255, 255, 255);
-    animation-name: heartBeat;
+.view-icong{
+    animation-name: viewProduct;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
-}
+    color: rgb(28, 38, 112);  
+  }
   
-  @keyframes heartBeat {
+.view-icon:hover {
+  animation-duration: 3s;
+  transform: scale(1.2);
+  color: rgb(42, 62, 209);  
+}
+
+.xd{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+  @keyframes viewProduct {
     0% {
       transform: scale(1);
     }

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import "../styleSheets/Perfil.css"
 import { Nav } from '../src/components/Nav'
+import { ViewProduct } from '../utils/CartFunctions'
 
 
 export function Perfil() {
 const [DataProfile, setDataProfile] = useState([])
+const [images, setImages] = useState([])
 
   const FechtProfile = async () =>{
   const token = sessionStorage.getItem("token")
@@ -25,9 +27,16 @@ const [DataProfile, setDataProfile] = useState([])
 
 useEffect(() => {
 FechtProfile() 
+const getData = async () =>{
+  const data = await ViewProduct()
+  setImages(data)
+  console.log(data);
+}
+getData()
 
 }, [])
 
+const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
 
   return (
     <div className="main_container_perfil">
@@ -46,7 +55,11 @@ FechtProfile()
                     </div>
               </div>   
               <div className='image_profile'>
-              <p>images</p>
+              {images.map((p) =>(
+                <div className='columns_profile' key={p.id}>
+                  <img className='image' src={url + p.product_img} alt="" />
+                </div>
+              ))}
             </div>
             </div>
         </div>
