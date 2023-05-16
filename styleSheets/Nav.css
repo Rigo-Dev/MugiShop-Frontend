@@ -20,14 +20,12 @@
 
 .container_logo img{
   display: block;
-
   max-width: 75px;
 }
 
 .search-container{
   display: block;
   position: relative;
-
   flex-grow: 1;
   padding: 0 1rem;
 }
@@ -53,11 +51,8 @@
   color: var(--dark);
   border: none;
   border-radius: 999px;
-
-  
   cursor: pointer;
   font-size: 2rem;
-
   transition: all 300ms;
 }
 .search-container .search-btn:hover{
@@ -69,15 +64,13 @@
 
 .container-links{
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   list-style: none;
-
 }
 .container-links li{
-
   padding: 0.5rem;
-
 }
 .container-links li a{
   display: block;
@@ -96,6 +89,11 @@
   }
 }
 
+.cart_icon{
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .container-links-mobile{
   display: none;
   list-style: none;
@@ -110,9 +108,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-
     background-color: var(--light);
-
     z-index: 9;
     padding: 0 1rem;
   }
@@ -149,7 +145,4 @@
     margin: 0 auto;
   }
 }
-
-
-
 

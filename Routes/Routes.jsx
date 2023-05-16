@@ -5,7 +5,7 @@ import { Register } from '../pages/Register';
 import { Login } from '../pages/Login';
 import { NotFound } from '../pages/NotFound';
 import { Perfil } from '../pages/Perfil';
-import { ConfirmToken } from '../utils/ConfirmToken';
+import { ConfirmTokenPerfil } from '../utils/ConfirmToken';
 
 export function Rout() {
 return (
@@ -17,8 +17,8 @@ return (
                 <Route path='/login' Component={Login}></Route> 
 
                 //! ESTA PARTE ES LA QUE PROTEGE LA RUTAL DEL PERFIL SI NO ESTA LOGUEADO NO LO DEJA ENTRAR
-                <Route element={<ConfirmToken />}>
-                    <Route path='/perfil' Component={Perfil} ></Route>
+                <Route element={<ConfirmTokenPerfil />}>
+                    <Route path='/profile' Component={Perfil} ></Route>
                 </Route>
                 //! --------------------------------------------------------------------------------------
 
