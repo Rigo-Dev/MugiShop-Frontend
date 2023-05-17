@@ -64,7 +64,7 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct })
             <Toaster 
             toastOptions={{
               duration: 2000
-            }}
+            }}  
             />
         </div>
     </div>
