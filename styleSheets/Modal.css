@@ -1,0 +1,12 @@
+.main_container_modal{
+    width: 95%;
+    height: 95%;
+    background-color: #fff; 
+    border-radius: 5px;
+    margin: 10% auto;
+    box-shadow: 0 0 5px #9f9f9f;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}

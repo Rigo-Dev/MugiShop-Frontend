@@ -4,8 +4,9 @@ import { Home } from '../pages/Home';
 import { Register } from '../pages/Register';
 import { Login } from '../pages/Login';
 import { NotFound } from '../pages/NotFound';
-import { Perfil } from '../pages/Perfil';
+import { Profile } from '../pages/Profile';
 import { ConfirmTokenPerfil } from '../utils/ConfirmToken';
+import { EditProfile } from '../pages/EditProfile';
 
 export function Rout() {
 return (
@@ -18,10 +19,11 @@ return (
 
                 //! ESTA PARTE ES LA QUE PROTEGE LA RUTAL DEL PERFIL SI NO ESTA LOGUEADO NO LO DEJA ENTRAR
                 <Route element={<ConfirmTokenPerfil />}>
-                    <Route path='/profile' Component={Perfil} ></Route>
+                    <Route path='/profile' Component={Profile} ></Route>
                 </Route>
                 //! --------------------------------------------------------------------------------------
 
+                <Route path='/editprofile' Component={EditProfile}></Route>
                 <Route path='*' Component={NotFound}></Route>
             </Routes>
         </BrowserRouter>    

@@ -54,7 +54,13 @@ export function Register() {
             navigate('/')
             sessionStorage.setItem("token", UserData.access_token)
         }else{
-          toast.error("existing user")
+          Object.keys(UserData.errors).forEach(e  => {
+            console.log(e, UserData.errors[e])
+            
+            UserData.errors[e].forEach(error => {
+              toast.error(error)
+            });
+          });
         }
       
     } 

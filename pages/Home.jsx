@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { Products } from '../src/components/Product';
 import "../styleSheets/Home.css"
 import { Nav } from '../src/components/Nav';
+import { Modal } from '../src/components/Modal';
 
 
 export function Home() { 
@@ -16,12 +17,19 @@ const Fechtproduct = async () =>{
 
 useEffect(() => {
 Fechtproduct()
-
 }, [])
 
   return (
   <div className='main_product_container'>
-          <Nav setProducts={setProducts}/>       
+    
+          {/* <div className='model_home_container'>
+            <div className='modal'>
+              <Modal/>
+            </div>
+          </div> */}
+
+          <Nav setProducts={setProducts}/>   
+
          <div className='product_home_container'>
             {products.map((p) => (
               <div className='columns' key={p.id}>
