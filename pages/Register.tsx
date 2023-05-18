@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Nav } from '../src/components/Nav'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Toaster, toast } from 'react-hot-toast'
 
 export function Register() {
   const navigate = useNavigate()
@@ -52,6 +53,8 @@ export function Register() {
             console.log("Registrado");
             navigate('/')
             sessionStorage.setItem("token", UserData.access_token)
+        }else{
+          toast.error("existing user")
         }
       
     } 
@@ -83,10 +86,12 @@ export function Register() {
                       <h5>You're not login?</h5>
                       <NavLink className={"redirect_singup"} to={'/login'}>Sing In</NavLink>
                   </div>
+
             </form>
           </div>
          </div>   
       </div>
+      <Toaster/>
     </div>
   )
 }

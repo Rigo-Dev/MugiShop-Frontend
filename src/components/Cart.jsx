@@ -3,13 +3,15 @@ import '../../styleSheets/Cart.css'
 import { AiFillDelete } from "react-icons/ai";
 import { HiOutlineXMark } from "react-icons/hi2"
 import { ViewProduct, DeleteProduct } from '../../utils/CartFunctions';
+import { Toaster, toast } from 'react-hot-toast';
+
  
 export default function CarritoDeCompras({ state }) {
   const [productCart, setProductCart] = useState([])
 
   const handleClick = (e) => {
     let node = e.target
-    if(node.className == "cart_open"){ 
+    if(node.className.baseVal == "xmark" || node.className == "cart_open"){ 
       state(false)
     }
   }
@@ -23,6 +25,7 @@ export default function CarritoDeCompras({ state }) {
   }, [])
   
   const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
+
 
   return (
     <div className='main_cart_container' onClick={handleClick}>
@@ -39,7 +42,7 @@ export default function CarritoDeCompras({ state }) {
                     <div className='product_cart'>  
                         <p className='name_product_cart'>{p.product}</p>
                         <img className='image_product_cart' src={url + p.product_img} alt={p.product_img}/>
-                        <AiFillDelete className='garbage' onClick={() =>{DeleteProduct(p.id, setProductCart)}}/>
+                        <AiFillDelete className='garbage' onClick={() =>{DeleteProduct(p.id, setProductCart), toast.success("eliminated")}}/>
                     </div>
                   </div>
                 ))}
@@ -47,6 +50,7 @@ export default function CarritoDeCompras({ state }) {
             </div>
         </div>
       </div> 
+      <Toaster/>
     </div>
   )
 }

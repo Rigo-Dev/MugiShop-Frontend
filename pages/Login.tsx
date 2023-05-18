@@ -5,6 +5,7 @@ import { ZodType, z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Nav } from '../src/components/Nav'
+import { Toaster, toast } from 'react-hot-toast'
 
 export function Login() {
     const navigate = useNavigate()
@@ -38,6 +39,8 @@ export function Login() {
         if(userData.access_token){
             navigate(`/`)
             sessionStorage.setItem("token", userData.access_token)
+        }else{
+            toast.error("data not match")
         }
     }
 
@@ -63,6 +66,7 @@ export function Login() {
          </div>
         </div>
         </div>
+        <Toaster/>
     </div>
 )
 }
