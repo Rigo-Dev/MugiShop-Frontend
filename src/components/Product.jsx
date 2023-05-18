@@ -1,19 +1,14 @@
 import React from "react";
 import "../../styleSheets/Product.css"
 import { useState } from "react";
-import { AiOutlineShoppingCart, AiFillEye, AiTwotoneShopping, AiFillEyeInvisible } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import toast, { Toaster } from 'react-hot-toast';
 import { AddProduct } from "../../utils/CartFunctions";
 
 export function Products({ nameProduct, imageProduct, idProduct, priceProduct }) {
   {/*//!ESTO ES PARA CAMBIAR DE LOGO ENTRE EL DE COMPRA Y EL DE FAVORITO*/}
-  const [shopping, setShopping] = useState(true)
 
   const token = sessionStorage.getItem("token")
-
-  const removeShopping = () =>{
-    setShopping(!shopping)
-  }
 
   const handleShoppingClick = async () =>{
     if (token) {
@@ -35,6 +30,11 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct })
   const [view, setView] = useState(true);
 
   const handleViewProduct = () => {
+    const getData = async () => {
+      const res = await ViewProductModal(idProduct)
+      console.log(res);
+    }
+    getData()
   setView(!view)
   };
   {/*//!---------------------------------------------------------------*/}

@@ -16,11 +16,15 @@ export default function ShoppingCart({ state }) {
     }
   }
 
-  useEffect(() => {
-    const getData = async () => {
-      const data = await ViewProduct()
-      setProductCart(data.reverse())
+  const getData = async () => {
+    let data = await ViewProduct()
+    if (data.length >= 1) {
+      data =  data.reverse()      
     }
+     setProductCart(data)
+  }
+
+  useEffect(() => {
     getData()
   }, [])
   

@@ -2,12 +2,11 @@ import { React, useState, useEffect } from 'react'
 import { Products } from '../src/components/Product';
 import "../styleSheets/Home.css"
 import { Nav } from '../src/components/Nav';
-import { Modal } from '../src/components/Modal';
 
 
 export function Home() { 
 const [products, setProducts] = useState([]);
-
+const [OpenModal, setOpenModal] = useState(false)
 
 const Fechtproduct = async () =>{
   const url = await fetch('http://localhost:8000/api/products')
@@ -23,8 +22,8 @@ Fechtproduct()
   <div className='main_product_container'>
     
           {/* <div className='model_home_container'>
-            <div className='modal'>
-              <Modal/>
+             <div className='modal'>
+                <h1>modal</h1>
             </div>
           </div> */}
 
