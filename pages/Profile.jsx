@@ -10,19 +10,30 @@ export function Profile() {
 const [DataProfile, setDataProfile] = useState([])
 const [images, setImages] = useState([])
 
-
-useEffect(() => {
 const getData = async () =>{
   const data = await FechtProfile()
   console.log(data);
   setDataProfile(data)
 }
-getData()
+
+const token = sessionStorage.getItem("token")
 
 const getImages = async () =>{
-  const data = await ViewProduct()
-  setImages(data)
+  const url = "http://localhost:8000/api/my-nfts"
+  const data = await fetch(url,{ 
+    method: "GET",
+    headers: {
+    Authorization: "Bearer " + token,
+    "Content-Type": "application/json",
+    }
+  },)
+  const img = await data.json()
+  setImages(img)
+  console.log(images)
 }
+
+useEffect(() => {
+getData()
 getImages()
 }, [])
 
@@ -47,11 +58,17 @@ const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
                     </div>
               </div>   
               <div className='image_profile'>
-              {images.map((p) =>(
-                <div className='columns_profile' key={p.id}>
-                  <img className='image' src={url + p.product_img} alt="" />
-                </div>
-              ))}
+              {
+                images.length >= 1?
+                  images.map((p) =>
+                    <>
+                      <div className='columns_profile' key={p.id}>
+                        <img className='image' src={url + p.product_img} alt="" />
+                      </div>
+                    </>
+                  )
+                  :null
+              }
             </div>
             </div>
         </div>

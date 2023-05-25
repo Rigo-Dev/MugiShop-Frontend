@@ -85,7 +85,7 @@ export function Register() {
                 {errors.last_name && <span>{errors.last_name.message}</span>}
                 <input type="text" className='input_form' placeholder='email' {...register("email")}/>
                 {errors.email && <span>{errors.email.message}</span>}
-                <input type="text"className='input_form' placeholder='password' {...register("password")}/>
+                <input type="password"className='input_form' placeholder='password' {...register("password")}/>
                 {errors.password && <span>{errors.password.message}</span>}
                   <div className="options_singin"> 
                     <button type="submit" className="button_singin">Sing In</button>

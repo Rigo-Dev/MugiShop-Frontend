@@ -1,0 +1,78 @@
+.main_container_payment{
+  width: 100%;
+  height: 100vh;
+  /* background: rebeccapurple; */
+  display: flex;
+  padding: 3rem;
+}
+
+.container_payment{
+  width: 50%;
+  /* background-color: beige; */
+}
+
+.header_product_payment{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+hr{
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(190, 190, 190, 0.652);
+}
+
+.body_payment_product{
+  width: 100%;
+}
+
+.payment_product{
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+}
+
+.payment_product img{
+  width: 15%;
+  border-radius: 10px;
+}
+
+
+.info_pay_product{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem 0rem 0rem 1rem;
+}
+
+.hola{
+  width: 50%;
+      padding: 10px;
+      background-color: blue;
+}
+
+.total_payment{
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgb(255, 255, 255);
+  width: 40%;
+  height: 30%;
+  border: 1px solid rgba(179, 179, 179, 0.83);
+  border-radius: 10px;
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.total_payment button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(25, 25, 25, 0.911);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 1rem 0;
+}

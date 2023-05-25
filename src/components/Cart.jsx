@@ -9,6 +9,7 @@ import { Toaster, toast } from 'react-hot-toast';
 export default function ShoppingCart({ state }) {
   const [productCart, setProductCart] = useState([])
 
+
   const handleClick = (e) => {
     let node = e.target
     if(node.className.baseVal == "xmark" || node.className == "cart_open"){ 
@@ -22,6 +23,7 @@ export default function ShoppingCart({ state }) {
       data =  data.reverse()      
     }
      setProductCart(data)
+     console.log(data);
   }
 
   useEffect(() => {
@@ -43,11 +45,19 @@ export default function ShoppingCart({ state }) {
                 <div className='main_product_cart_container'>
                 {productCart.map((p) =>(
                   <div className='product_cart_container' key={p.id}>
-                    <div className='product_cart'>  
-                        <p className='name_product_cart'>{p.product}</p>
-                        <img className='image_product_cart' src={url + p.product_img} alt={p.product_img}/>
-                        <AiFillDelete className='garbage' onClick={() =>{DeleteProduct(p.id, setProductCart), toast.error("eliminated")}}/>
+                    <div className='product_cart'> 
+                        <div className='container_image_product_cart'>
+                          <img src={url + p.product_img} alt={p.product_img}/>
+                        </div>
+                          <div className='container_info_product_cart'>
+                            <div className='info_product_cart'>
+                              <p className='name'>{p.product}</p>
+                              <p className='price'>$11</p>
+                            </div>
+                              <AiFillDelete className='garbage' onClick={() =>{DeleteProduct(p.id, setProductCart), toast.error("eliminated")}}/>
+                          </div>
                     </div>
+                    <hr />
                   </div>
                 ))}
                 </div>
