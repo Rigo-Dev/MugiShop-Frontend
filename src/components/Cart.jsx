@@ -6,7 +6,7 @@ import { ViewProduct, DeleteProduct } from '../../utils/CartFunctions';
 import { Toaster, toast } from 'react-hot-toast';
 
  
-export default function CarritoDeCompras({ state }) {
+export default function ShoppingCart({ state }) {
   const [productCart, setProductCart] = useState([])
 
   const handleClick = (e) => {
@@ -16,11 +16,15 @@ export default function CarritoDeCompras({ state }) {
     }
   }
 
-  useEffect(() => {
-    const getData = async () => {
-      const data = await ViewProduct()
-      setProductCart(data.reverse())
+  const getData = async () => {
+    let data = await ViewProduct()
+    if (data.length >= 1) {
+      data =  data.reverse()      
     }
+     setProductCart(data)
+  }
+
+  useEffect(() => {
     getData()
   }, [])
   
@@ -42,7 +46,7 @@ export default function CarritoDeCompras({ state }) {
                     <div className='product_cart'>  
                         <p className='name_product_cart'>{p.product}</p>
                         <img className='image_product_cart' src={url + p.product_img} alt={p.product_img}/>
-                        <AiFillDelete className='garbage' onClick={() =>{DeleteProduct(p.id, setProductCart), toast.success("eliminated")}}/>
+                        <AiFillDelete className='garbage' onClick={() =>{DeleteProduct(p.id, setProductCart), toast.error("eliminated")}}/>
                     </div>
                   </div>
                 ))}

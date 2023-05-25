@@ -1,10 +1,10 @@
 import { React, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../public/images/Logo.png";
 import "../../styleSheets/Nav.css";
 import { AiOutlineSearch, AiFillHome, AiOutlineUserAdd, AiOutlineShoppingCart, AiOutlineUser} from "react-icons/ai";
 import { FiLogIn } from "react-icons/fi";
-import CarritoDeCompras from "./Cart";
+import ShoppingCart from "./Cart";
 
 export function Nav({ setProducts, isActive }) {
   const [login, setLogin] = useState(true);
@@ -14,7 +14,6 @@ export function Nav({ setProducts, isActive }) {
     setCart(true);
   };
 
-  //! CONFIRMA SI ESTA LOGEADO Y DEVUELVE 2 NAV DIFERENTES
   const token = sessionStorage.getItem("token");
 
   function options() {
@@ -26,9 +25,7 @@ export function Nav({ setProducts, isActive }) {
   useEffect(() => {
     options();
   }, []);
-//!------------------------------------------------------
 
-//! PARA FILTRAR LOS PRODUCTOS EN EL BUSCADOR
   const handleChange = async (e) => {
     const url = await fetch(
       `http://localhost:8000/api/products?name=${e.target.value}`
@@ -37,7 +34,13 @@ export function Nav({ setProducts, isActive }) {
 
     setProducts(data);
   };
-//!-----------------------------------------
+
+  const navigate = useNavigate()
+
+  const Logout = () => {
+    navigate('/login');
+    sessionStorage.removeItem("token");
+  }
 
   return (
     <>
@@ -56,7 +59,6 @@ export function Nav({ setProducts, isActive }) {
             </button>
           </div>
 
-          {/* //! OPCIONES DE MENU EN EL MODO DESKTOP */}
           {login ? (
             <ul className="container-links">
               <li>
@@ -72,6 +74,11 @@ export function Nav({ setProducts, isActive }) {
               <li>
                 <AiOutlineShoppingCart className="cart_icon" onClick={() => openCart()} />
               </li>
+              <div className="xd">
+                <li onClick={Logout}>
+                  asdsad
+                </li>
+              </div>
             </ul>
           ) : (
             <ul className="container-links">
@@ -92,10 +99,7 @@ export function Nav({ setProducts, isActive }) {
               </li>
             </ul>
           )}
-          {/* //!---------------------------------------------------------------------- */}
 
-
-          {/* //! MENU MOBILE */}
           {login ? (
             <ul className="container-links-mobile">
             <li>
@@ -139,10 +143,9 @@ export function Nav({ setProducts, isActive }) {
             </li>
           </ul>
           )}
-          {/* //! ----------------------------------- */}
         </div>
       </nav>
-      {login ? cart ? <CarritoDeCompras state={setCart} /> : null : null}
+      {login ? cart ? <ShoppingCart state={setCart} /> : null : null}
     </>
   );
 }

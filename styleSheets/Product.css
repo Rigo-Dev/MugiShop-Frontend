@@ -123,14 +123,14 @@
   color: rgb(42, 62, 209);  
 }
 
-.xd{
+/* .xd{
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   width: 100%;
   backdrop-filter: blur(10px);
-}
+} */
 
   @keyframes viewProduct {
     0% {

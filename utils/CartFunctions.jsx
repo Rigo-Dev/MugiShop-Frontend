@@ -15,6 +15,7 @@ export async function AddProduct(id) {
 
   const PostProductData = await res.json();
   console.log(PostProductData);
+  return PostProductData
 }
 //!--------------------------------------------
 

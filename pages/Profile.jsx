@@ -1,39 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import "../styleSheets/Perfil.css"
 import { Nav } from '../src/components/Nav'
+import { FechtProfile } from '../utils/ProfileFunctions'
 import { ViewProduct } from '../utils/CartFunctions'
+import { NavLink } from 'react-router-dom'
 
 
-export function Perfil() {
+export function Profile() {
 const [DataProfile, setDataProfile] = useState([])
 const [images, setImages] = useState([])
 
-  const FechtProfile = async () =>{
-  const token = sessionStorage.getItem("token")
-  const res = await fetch("http://localhost:8000/api/profile",{
-    method: "GET",
-    headers: {
-      "Authorization": "Bearer " + token,
-      "Content-Type": "application/json"  
-    },
-    body: JSON.stringify()
-  })
-  const info =  await res.json()
-
-  setDataProfile(info)
-  console.log(info);
-}
-
 
 useEffect(() => {
-FechtProfile() 
 const getData = async () =>{
-  const data = await ViewProduct()
-  setImages(data)
+  const data = await FechtProfile()
   console.log(data);
+  setDataProfile(data)
 }
 getData()
 
+const getImages = async () =>{
+  const data = await ViewProduct()
+  setImages(data)
+}
+getImages()
 }, [])
 
 const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
@@ -51,7 +41,9 @@ const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
                     <p>{DataProfile.email}</p>
                     <div className='button_profile'>
                       <button className="button">Compartir</button>
-                      <button className="button">Editar Perfil</button>
+                      <NavLink to={'/editprofile'}>
+                        <button className="button">Editar Perfil</button>
+                      </NavLink>
                     </div>
               </div>   
               <div className='image_profile'>

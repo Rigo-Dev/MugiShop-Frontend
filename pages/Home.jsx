@@ -6,7 +6,7 @@ import { Nav } from '../src/components/Nav';
 
 export function Home() { 
 const [products, setProducts] = useState([]);
-
+const [OpenModal, setOpenModal] = useState(false)
 
 const Fechtproduct = async () =>{
   const url = await fetch('http://localhost:8000/api/products')
@@ -16,12 +16,19 @@ const Fechtproduct = async () =>{
 
 useEffect(() => {
 Fechtproduct()
-
 }, [])
 
   return (
   <div className='main_product_container'>
-          <Nav setProducts={setProducts}/>       
+    
+          {/* <div className='model_home_container'>
+             <div className='modal'>
+                <h1>modal</h1>
+            </div>
+          </div> */}
+
+          <Nav setProducts={setProducts}/>   
+
          <div className='product_home_container'>
             {products.map((p) => (
               <div className='columns' key={p.id}>

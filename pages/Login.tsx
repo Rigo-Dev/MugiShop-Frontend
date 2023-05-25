@@ -40,7 +40,7 @@ export function Login() {
             navigate(`/`)
             sessionStorage.setItem("token", userData.access_token)
         }else{
-            toast.error("data not match")
+            toast.error(userData.error)
         }
     }
 
