@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import "../styleSheets/Perfil.css"
-import { Nav } from '../src/components/Nav'
-import { FechtProfile } from '../utils/ProfileFunctions'
-import { ViewProduct } from '../utils/CartFunctions'
+import "../../styleSheets/Profile.css"
+import { Nav } from '../components/Nav'
+import { FechtProfile } from '../../utils/ProfileFunctions'
 import { NavLink } from 'react-router-dom'
+
 
 
 export function Profile() {

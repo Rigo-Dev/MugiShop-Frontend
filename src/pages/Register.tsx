@@ -1,9 +1,9 @@
 import React from 'react'
-import "../styleSheets/Register.css"
+import "../../styleSheets/Register.css"
 import { ZodType, z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Nav } from '../src/components/Nav'
+import { Nav } from '../components/Nav';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Toaster, toast } from 'react-hot-toast'
 
@@ -68,7 +68,7 @@ export function Register() {
 
   return (
     <div className="main_container_register">
-      <Nav />
+      <Nav/>
       <div className='container_register'>
         <div className="register">        
           <h1 className="title">Register</h1>

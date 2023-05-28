@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from 'react'
-import { Products } from '../src/components/Product';
-import "../styleSheets/Home.css"
-import { Nav } from '../src/components/Nav';
-import { Modal } from '../src/components/Modal';
+import "../../styleSheets/Home.css"
+import { Products } from '../components/Product';
+import { Nav } from '../components/Nav';
+import { Modal } from '../components/Modal';
 
 
 export function Home() { 
@@ -39,13 +39,9 @@ export function Home() {
   return (
     <>
       <div className='main_product_container'>
-        
-      <Modal 
-        Open={Open} CloseModal={() => CloseModal()}
-        dataModal={dataModal}
-      />
-        <Nav setProducts={setProducts}/>   
+      <Modal Open={Open} CloseModal={() => CloseModal()} dataModal={dataModal}/>
 
+        <Nav setProducts={setProducts}/>   
 
             <div className='product_home_container'>
                 {products.map((p) => (
@@ -60,12 +56,7 @@ export function Home() {
                   </div>
                 ))}
             </div>
-
-            
-      </div>
-
-                        
-
+      </div>              
     </>
   )
 }

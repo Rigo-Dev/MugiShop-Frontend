@@ -1,9 +1,9 @@
 import React from 'react'
-import "../styleSheets/Login.css"
+import "../../styleSheets/login.css"
 import { useForm } from 'react-hook-form'
 import { ZodType, z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Toaster, toast } from 'react-hot-toast'
 
 export function EditProfile() {
@@ -42,7 +42,7 @@ export function EditProfile() {
             function NavigateLater() {
                 return new Promise(resolve => {
                   setTimeout(() => {
-                    resolve(navigate(`/`));
+                    resolve(navigate(`/profile`));
                   }, 1500);
                 });
             }
