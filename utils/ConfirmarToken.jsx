@@ -1,9 +1,10 @@
-export function ConfirmarToken(){
-    const [login, setLogin] = useState(true)
+const token =  sessionStorage.getItem("token")
 
-      const token =  sessionStorage.getItem("token")
-    
+
+export function ConfirmUserToken(){
+    const [TokenProfile, setConfirmTokenProfile] = useState(false)
+
       if(!token){
-        setLogin(!login)
+        setConfirmTokenProfile(!TokenProfile)
       }
 }

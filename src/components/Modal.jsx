@@ -35,20 +35,19 @@ export function Modal({Open, CloseModal, dataModal}) {
                 </button>
             </div>
             <div className='modal_body'>
-  
                 <div className='modal_image'>
                     <img src={dataModal.img} alt="img" />
                 </div>
-                <div className='container_modal_info'> 
+                <div className='modal_info_container'> 
                   <div className='modal_info'>
                     <h2>{dataModal.name}</h2>
                     <p>Price ${dataModal.price}</p>
                   </div>
-                      <div className='container_modal_btn_shoopin'>
-                        <div className='modal_btn_shoopin'>
-                            <button onClick={handleShoppingClick}>Add to cart</button>
-                        </div>
-                      </div>
+                  <div className='modal_btn_shoopin_container'>
+                    <div className='modal_btn_shoopin'>
+                        <button onClick={handleShoppingClick}>Add to cart</button>
+                    </div>
+                  </div>
                 </div>
             </div>
                 

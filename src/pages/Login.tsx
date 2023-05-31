@@ -1,10 +1,10 @@
 import React from 'react'
-import "../styleSheets/Login.css"
+import "../../styleSheets/Login.css"
+import { Nav } from '../components/Nav'
 import { useForm } from 'react-hook-form'
 import { ZodType, z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { Nav } from '../src/components/Nav'
 import { Toaster, toast } from 'react-hot-toast'
 
 export function Login() {
@@ -47,7 +47,7 @@ export function Login() {
 
   return (
     <div className="main_container_login">
-        <Nav/>
+        <Nav />
         <div className="container_login">
         <div className="login">  
             <h1 className="title">Login</h1>

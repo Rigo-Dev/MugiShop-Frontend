@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
+import "../../styleSheets/Nav.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../public/images/Logo.png";
-import "../../styleSheets/Nav.css";
 import { AiOutlineSearch, AiFillHome, AiOutlineUserAdd, AiOutlineShoppingCart, AiOutlineUser} from "react-icons/ai";
 import { FiLogIn } from "react-icons/fi";
 import ShoppingCart from "./Cart";
@@ -74,9 +74,9 @@ export function Nav({ setProducts, isActive }) {
               <li>
                 <AiOutlineShoppingCart className="cart_icon" onClick={() => openCart()} />
               </li>
-              <div className="xd">
+              <div className="logout">
                 <li onClick={Logout}>
-                  asdsad
+                  Logout
                 </li>
               </div>
             </ul>

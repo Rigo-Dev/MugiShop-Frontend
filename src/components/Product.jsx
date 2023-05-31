@@ -1,8 +1,7 @@
-import React from "react";
+import { React, useState } from "react";
 import "../../styleSheets/Product.css"
-import { useState } from "react";
 import { AiOutlineShoppingCart, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import toast, { Toaster } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import { AddProduct } from "../../utils/CartFunctions";
 
 export function Products({ nameProduct, imageProduct, idProduct, priceProduct, OpenModal }) {
@@ -19,8 +18,9 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct, O
       if(messageError.error != undefined){
         toast.error(messageError.error)
         return
+      }else{
+        toast.success(messageError.message)
       }
-      toast.success(messageError.message)
 
     }else{
       toast.error("Need Login")
@@ -28,8 +28,6 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct, O
   }
 
   const [view, setView] = useState(true);
-
-
 
   const handleViewProduct = () => {
   setView(!view)

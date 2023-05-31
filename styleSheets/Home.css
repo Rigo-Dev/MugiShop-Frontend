@@ -1,10 +1,7 @@
-
-
 .product_home_container{
   margin: 1rem;
   columns: 5 220px;
-  gap: 20px;
-
+  gap: 10px;
 }
 
 .columns{
@@ -13,17 +10,17 @@
   margin-top: 0.5rem;
 }
 
-@media screen and (max-width: 1080px){
+@media (max-width: 1080px){
   .product_home_container{
     columns: 3 150px;
-    gap: 20px;
+    gap: 10px;
   }
 }
 
 
-@media screen and (max-width: 1250px){
+@media (max-width: 1250px){
   .product_home_container{
     columns: 4 150px;
-    gap: 20px;
+    gap: 10px;
   }
 }
