@@ -3,8 +3,9 @@ import "../../styleSheets/Nav.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../public/images/Logo.png";
 import { AiOutlineSearch, AiFillHome, AiOutlineUserAdd, AiOutlineShoppingCart, AiOutlineUser} from "react-icons/ai";
-import { FiLogIn } from "react-icons/fi";
+import { BsFillDoorOpenFill } from "react-icons/bs";
 import ShoppingCart from "./Cart";
+import { GiExitDoor } from "react-icons/gi"
 
 export function Nav({ setProducts, isActive }) {
   const [login, setLogin] = useState(true);
@@ -119,6 +120,17 @@ export function Nav({ setProducts, isActive }) {
                    Perfil
                 </NavLink>
             </li>
+              {/* <div className="logout-mobile">
+                <li onClick={Logout}>
+                  Logout
+                </li>
+              </div> */}
+              <li onClick={Logout}>
+                <NavLink className={({ isActive }) => (isActive ? "" : "")}>
+                  <GiExitDoor/>
+                     Logout
+                </NavLink>
+              </li>
           </ul>
           ):(
           <ul className="container-links-mobile">
@@ -131,14 +143,15 @@ export function Nav({ setProducts, isActive }) {
 
             <li>
               <NavLink className={({ isActive }) => (isActive ? "active" : "")} to={"/login"}>
-                <FiLogIn />
-                Login
+                <BsFillDoorOpenFill/>
+                  Login
               </NavLink>
             </li>
 
             <li>
               <NavLink className={({ isActive }) => (isActive ? "active" : "")} to={"/singup"}>
-                <AiOutlineUserAdd />Register
+                <AiOutlineUserAdd />
+                  Register
               </NavLink>    
             </li>
           </ul>

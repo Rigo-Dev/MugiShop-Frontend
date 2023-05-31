@@ -91,6 +91,13 @@
   margin: 0.3rem;
 }
 
+.loader_cart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
 
 .product_cart{
   display: flex;
@@ -162,4 +169,22 @@
   cursor: pointer;
   padding: 5px;
   margin-bottom: 1rem;
+}
+
+.loader_cart_container{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no_product_cart{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
 }

@@ -69,9 +69,11 @@
   align-items: center;
   list-style: none;
 }
+
 .container-links li{
   padding: 0.5rem;
 }
+
 .container-links li a{
   display: block;
   color: var(--dark);
@@ -80,6 +82,23 @@
 
 .container-links li a.active{
   color: var(--secondary);
+}
+
+.cart_icon{
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.logout{
+  background-color: var(--secondary);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.logout li{
+  font-size: 0.8rem;
+  list-style: none;
 }
 
 
@@ -106,7 +125,7 @@
     left: 0;
     width: 100%;
     background-color: var(--light);
-    z-index: 9;
+    z-index: 1;
     padding: 0 1rem;
   }
   .container-links li{
@@ -151,12 +170,7 @@
   }
 
   .cart-icon{
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: -0.5rem;
   }
-}
-
-
-.logout{
-  background-color: red;
 }

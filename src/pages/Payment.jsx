@@ -6,7 +6,7 @@ import { CircleLoader } from "react-spinners";
 export default function Payment() {
   const [PaymentProduct, setPaymentProduct] = useState([]);
   const [Loader, setLoader] = useState(true)
-  const [PaymentLink, setPaymentLink] = useState([])
+  const [PaymentLink, setPaymentLink] = useState(undefined)
 
   const getData = async (e) =>{
     let data = await ViewProduct()
@@ -40,6 +40,7 @@ export default function Payment() {
     getLink()
   }, [])
   
+
   const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
 
   return (
@@ -70,8 +71,16 @@ export default function Payment() {
 
       <div className="price_payment_container">
           <div className="price_payment">
-              <h3>Total price:</h3>
-              <a href={PaymentLink}>{ Loader ? <CircleLoader className="pay_loader" color="#EDEDED" size={20}/> :"Paynow" }</a>
+            <div className="total_price_payment">
+                <p>Total price:</p>
+                <p>Mejor paga</p>
+            </div>
+              {PaymentLink !=undefined ?  
+                <a href={PaymentLink}>PayNow</a>
+                :
+                <a href=""><CircleLoader className="pay_loader" color="#EDEDED" size={20}/></a>
+              }
+
           </div>
       </div>
     </div>

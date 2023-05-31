@@ -49,8 +49,7 @@ export function Modal({Open, CloseModal, dataModal}) {
                     </div>
                   </div>
                 </div>
-            </div>
-                
+            </div>     
         </div>
         <Toaster/>
     </div>

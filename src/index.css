@@ -18,6 +18,12 @@ img{
 }
 
 body{
+    display: flex;
+    justify-content: center;
     background-color: var(--very-light);
+}
+
+body #root{
+    width: 1300px;
 }
 

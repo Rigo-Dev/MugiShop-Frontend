@@ -31,16 +31,15 @@ export function Login() {
             body: JSON.stringify(data)
         });
 
-        const userData = await res.json()
+        const userToken = await res.json()
 
-        console.log(userData);
-        
-
-        if(userData.access_token){
+        console.log(userToken);
+                  
+        if(userToken.access_token){
             navigate(`/`)
-            sessionStorage.setItem("token", userData.access_token)
+            sessionStorage.setItem("token", userToken.access_token)
         }else{
-            toast.error(userData.error)
+            toast.error(userToken.error)
         }
     }
 
