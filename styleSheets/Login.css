@@ -55,7 +55,7 @@
 }
 
 .button_login{
-  background-color: #ee7716;
+  background-color: var(--secondary);
   color: white;
   border: none;
   border-radius: 20px;

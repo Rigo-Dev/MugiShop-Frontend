@@ -1,12 +1,100 @@
-.main_container_modal{
-    width: 95%;
-    height: 95%;
-    background-color: #fff; 
-    border-radius: 5px;
-    margin: 10% auto;
-    box-shadow: 0 0 5px #9f9f9f;
-    padding: 5px;
+*{
+    font-family: Arial, Helvetica, sans-serif;
+  }  
+
+.container_modal{
     display: flex;
     justify-content: center;
-    align-items: center ;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    z-index: 3;
+}
+
+
+
+.modal{
+    display: block;
+    width: 75%;
+    height: auto;
+    max-height: 95%;
+    background-color: var(--very-light);
+    max-width: 1200px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal_header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgba(241, 241, 241, 0.575);
+}
+
+.modal_btn_close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(234, 234, 234, 0.681);
+}
+
+.modal_btn_close svg{
+    font-size: 2rem;
+}
+
+.modal_body{
+    display: flex;
+}
+
+.modal_image{
+    width: 40%;
+    /* padding: 10px; */
+}
+
+.modal_image img{
+    padding: 10px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 90%;
+    /* object-fit: contain; */
+    border-radius: 20px;
+}
+
+.container_modal_info{
+    width: 50%;
+    margin: 0.8rem;
+    /* margin-top: 0.8em; */
+}
+
+.modal_info{
+    height: 70%;
+}
+
+.modal_btn_shoopin{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: flex-end;
+}
+
+.modal_btn_shoopin button{
+    border: none;
+    background-color: #fff;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.container_modal_btn_shoopin{
+    display: flex;
+    justify-content: center;
+    height: 50px;
 }

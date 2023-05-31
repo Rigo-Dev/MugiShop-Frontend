@@ -5,7 +5,7 @@ import { AiOutlineShoppingCart, AiFillEye, AiFillEyeInvisible } from "react-icon
 import toast, { Toaster } from 'react-hot-toast';
 import { AddProduct } from "../../utils/CartFunctions";
 
-export function Products({ nameProduct, imageProduct, idProduct, priceProduct }) {
+export function Products({ nameProduct, imageProduct, idProduct, priceProduct, OpenModal }) {
   {/*//!ESTO ES PARA CAMBIAR DE LOGO ENTRE EL DE COMPRA Y EL DE FAVORITO*/}
 
   const token = sessionStorage.getItem("token")
@@ -29,12 +29,9 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct })
 
   const [view, setView] = useState(true);
 
+
+
   const handleViewProduct = () => {
-    const getData = async () => {
-      const res = await ViewProductModal(idProduct)
-      console.log(res);
-    }
-    getData()
   setView(!view)
   };
   {/*//!---------------------------------------------------------------*/}
@@ -46,7 +43,6 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct })
   return (
     <div className="product_container">
       {/*//!LAS PALABRAS ENTRE {} SON LAS QUE USO PARA DARLE INFORMACION Y MOSTRAR LA INFORMACION EN EL LUGAR QUE QUIERO EN EL HOME*/}
-      <h1 className="name_product">{nameProduct}</h1>
       <img className="image" src={url + imageProduct} alt={idProduct} />
         <div className="options_product">
           <h4 className="price_product">${priceProduct}</h4>
@@ -54,15 +50,15 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct })
               <AiOutlineShoppingCart className="shopping cart-shopping"  onClick={()=>{handleShoppingClick()}} />
 
             {view?(
-              <AiFillEye className="view-image view-icon" onClick={handleViewProduct} />
+              <AiFillEye className="view-image view-icon" onClick={()=>OpenModal(url+imageProduct, nameProduct, priceProduct, idProduct)} />
 
               ):(
-              <div className="xd">
+              <div className="">
                 <AiFillEyeInvisible className="view-image view-icong" onClick={handleViewProduct}/> 
               </div>
             )}
             <Toaster 
-            toastOptions={{
+              toastOptions={{
               duration: 2000
             }}  
             />

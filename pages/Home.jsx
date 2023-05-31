@@ -2,44 +2,70 @@ import { React, useState, useEffect } from 'react'
 import { Products } from '../src/components/Product';
 import "../styleSheets/Home.css"
 import { Nav } from '../src/components/Nav';
+import { Modal } from '../src/components/Modal';
 
 
 export function Home() { 
-const [products, setProducts] = useState([]);
-const [OpenModal, setOpenModal] = useState(false)
+  const [products, setProducts] = useState([]);
+  const [Open, setOpen] = useState(false)
+  const [dataModal, setDataModal] = useState(null)
 
-const Fechtproduct = async () =>{
-  const url = await fetch('http://localhost:8000/api/products')
-  const data  = await url.json()
-  setProducts(data)
-}
+  const Fechtproduct = async () =>{
+    const url = await fetch('http://localhost:8000/api/products')
+    const data  = await url.json()
+    setProducts(data)
+  }
 
-useEffect(() => {
-Fechtproduct()
-}, [])
+  const OpenModal = (img, name, price, id)=>{
+    setOpen(true)
+
+    setDataModal({
+      img,
+      name,
+      price,
+      id
+    })
+    
+  }
+  const CloseModal = ()=>{
+    setOpen(false)
+  }
+
+  useEffect(() => {
+
+    Fechtproduct()
+  }, [])
 
   return (
-  <div className='main_product_container'>
-    
-          {/* <div className='model_home_container'>
-             <div className='modal'>
-                <h1>modal</h1>
+    <>
+      <div className='main_product_container'>
+        
+      <Modal 
+        Open={Open} CloseModal={() => CloseModal()}
+        dataModal={dataModal}
+      />
+        <Nav setProducts={setProducts}/>   
+
+
+            <div className='product_home_container'>
+                {products.map((p) => (
+                  <div className='columns' key={p.id}>
+                    <Products 
+                      nameProduct={p.name}
+                      priceProduct={p.price}
+                      imageProduct={p.image} 
+                      idProduct={p.id}
+                      OpenModal={OpenModal}
+                    />
+                  </div>
+                ))}
             </div>
-          </div> */}
 
-          <Nav setProducts={setProducts}/>   
+            
+      </div>
 
-         <div className='product_home_container'>
-            {products.map((p) => (
-              <div className='columns' key={p.id}>
-                <Products 
-                priceProduct={p.price}
-                imageProduct={p.image} 
-                idProduct={p.id}
-                />
-              </div>
-            ))}
-         </div>
-  </div>
+                        
+
+    </>
   )
 }

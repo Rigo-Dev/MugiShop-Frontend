@@ -109,15 +109,15 @@ export function Nav({ setProducts, isActive }) {
               </NavLink>
             </li>
 
+            <li className="cart-mobile">
+                <AiOutlineShoppingCart className="cart-icon"  onClick={() => openCart()} /><p>shopping</p>
+            </li>
+
             <li>
               <NavLink className={({ isActive }) => (isActive ? "active" : "")} to={"/profile"}>
                 <AiOutlineUser/>
                    Perfil
                 </NavLink>
-            </li>
-
-            <li className="cart-mobile">
-                <AiOutlineShoppingCart className="cart-icon"  onClick={() => openCart()} /><p>shopping</p>
             </li>
           </ul>
           ):(

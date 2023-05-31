@@ -55,7 +55,7 @@ export function Login() {
             <form action="" className="form" onSubmit={handleSubmit(submitData)}>
                 <input type="text" className='input_form' placeholder='email' {...register("email")}/>
                 {errors.email && <span>{errors.email.message}</span>}
-                <input type="text" className='input_form' placeholder='password' {...register("password")}/>
+                <input type="password" className='input_form' placeholder='password' {...register("password")}/>
                 {errors.password && <span>{errors.password.message}</span>}
                 <div className="options_login">                   
                     <button type="submit" onClick={(e) =>{e.preventDefault(); handleSubmit(submitData)()}} className="button_login">Log in</button>
