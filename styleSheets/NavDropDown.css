@@ -1,4 +1,4 @@
-.container_dropdown_menu{
+.container_dropdown_menu {
   z-index: 50;
   width: 100%;
   position: fixed;
@@ -6,48 +6,48 @@
   left: 10px;
 }
 
-@media screen and (min-width: 820px){
-  .container_dropdown_menu{
+@media screen and (min-width: 820px) {
+  .container_dropdown_menu {
     width: 20px;
   }
 }
 
-  .open_menu{
-    visibility: hidden;
-    width: 3rem;
-    height: 3rem;
-  }
-  
-  @media screen and (max-width: 800px){
-    .open_menu{
-      visibility: visible;
-    }
-  }
-  
-  .close_menu{
-    visibility: hidden;
-    width: 3rem;
-    height: 3rem;
-  }
+.open_menu {
+  visibility: hidden;
+  width: 3rem;
+  height: 3rem;
+}
 
-  .container_close_menu{
-    visibility: hidden;
-    display: flex;
-    width: 95%;
-    height: 100vh;
-    background-color: rgb(93, 93, 93);
+@media screen and (max-width: 800px) {
+  .open_menu {
+    visibility: visible;
   }
+}
 
-  @media screen and (max-width: 800px){
-    .container_close_menu{
-      visibility: visible;
-    }
-    .close_menu{
-      visibility: visible;
-    }
-  }  
+.close_menu {
+  visibility: hidden;
+  width: 3rem;
+  height: 3rem;
+}
 
-  .logo_dropdown{
-    width: 3rem;
-    height: 3rem;
+.container_close_menu {
+  visibility: hidden;
+  display: flex;
+  width: 95%;
+  height: 100vh;
+  background-color: rgb(93, 93, 93);
+}
+
+@media screen and (max-width: 800px) {
+  .container_close_menu {
+    visibility: visible;
   }
+  .close_menu {
+    visibility: visible;
+  }
+}
+
+.logo_dropdown {
+  width: 3rem;
+  height: 3rem;
+}

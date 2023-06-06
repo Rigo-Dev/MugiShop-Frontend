@@ -1,8 +1,8 @@
-*{
+* {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container_login{
+.container_login {
   display: flex;
   text-align: center;
   justify-content: center;
@@ -11,7 +11,7 @@
   height: 90vh;
 }
 
-.login{
+.login {
   background-color: aliceblue;
   width: 300px;
   height: auto;
@@ -19,18 +19,18 @@
   padding: 10px;
 }
 
-.title{
+.title {
   color: rebeccapurple;
   margin-bottom: 1rem;
 }
 
-.container_form{
+.container_form {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.form{
+.form {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -40,8 +40,7 @@
   gap: 5px;
 }
 
-
-.input_form{
+.input_form {
   margin-bottom: 0.5rem;
   border-radius: 10px;
   width: 80%;
@@ -50,11 +49,11 @@
   outline: none;
 }
 
-.options_login{
+.options_login {
   width: 100%;
 }
 
-.button_login{
+.button_login {
   background-color: var(--secondary);
   color: white;
   border: none;
@@ -65,35 +64,34 @@
   cursor: pointer;
 }
 
-h5{
+h5 {
   margin-bottom: 0.5em;
   margin-top: 15px;
 }
 
-.redirect_singup{
+.redirect_singup {
   text-decoration: none;
 }
 
-.login{
+.login {
   animation-duration: 2s;
   animation-name: login;
 }
 
 @keyframes login {
-  from{
+  from {
     margin-top: 40vh;
     opacity: 0;
   }
 
-  to{
+  to {
     margin-left: 0%;
     opacity: 1;
   }
 }
 
-span{
+span {
   font-size: 11px;
   color: red;
   margin-bottom: 5px;
 }
-

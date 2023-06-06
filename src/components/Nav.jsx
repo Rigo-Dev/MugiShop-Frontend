@@ -120,11 +120,6 @@ export function Nav({ setProducts, isActive }) {
                    Perfil
                 </NavLink>
             </li>
-              {/* <div className="logout-mobile">
-                <li onClick={Logout}>
-                  Logout
-                </li>
-              </div> */}
               <li onClick={Logout}>
                 <NavLink className={({ isActive }) => (isActive ? "" : "")}>
                   <GiExitDoor/>

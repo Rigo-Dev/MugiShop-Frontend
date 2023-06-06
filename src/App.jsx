@@ -4,11 +4,10 @@ import { Rout } from "../src/Routes/Routes";
 
 function App() {
   return (
-    <div className="App"> 
-      <Rout/>
+    <div className="App">
+      <Rout />
     </div>
   );
 }
 
 export default App;
-  

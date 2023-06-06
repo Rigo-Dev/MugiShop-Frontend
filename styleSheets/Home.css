@@ -1,31 +1,31 @@
-.product_home_container{
-  margin: 1rem;
+.product_home_container {
+  width: 1300px;
+  margin: 0 auto;
   columns: 6 150px;
   gap: 10px;
 }
 
-.columns{
+.columns {
   display: inline-block;
   height: 100%;
   margin-top: 0.5rem;
 }
 
-@media (max-width: 1080px){
-  .product_home_container{
+@media (max-width: 1080px) {
+  .product_home_container {
     columns: 3 150px;
     gap: 10px;
   }
 }
 
-
-@media (max-width: 1250px){
-  .product_home_container{
+@media (max-width: 1250px) {
+  .product_home_container {
     columns: 4 150px;
     gap: 10px;
   }
 }
 
-.loader_home_container{
+.loader_home_container {
   display: flex;
   justify-content: center;
   align-items: center;
