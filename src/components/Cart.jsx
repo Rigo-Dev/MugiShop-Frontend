@@ -1,16 +1,17 @@
 import { React, useState, useEffect } from "react";
-import "../../styleSheets/Cart.css";
+import "../styleSheets/Cart.css";
 import { AiFillDelete } from "react-icons/ai";
 import { HiOutlineXMark } from "react-icons/hi2";
-import { ViewProduct, DeleteProduct } from "../../utils/CartFunctions";
+import { viewCart } from "../services/RequestCart/viewCart";
+import { deleteCart } from "../services/RequestCart/deleteCart";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CircleLoader } from "react-spinners";
 
 export default function ShoppingCart({ state }) {
   const [productCart, setProductCart] = useState([]);
-  const [ButtonShooping, setButtonShooping] = useState(false);
-  const [Loader, setLoader] = useState(true);
+  const [buttonShooping, setButtonShooping] = useState(false);
+  const [loader, setLoader] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = (e, xmark = false) => {
@@ -27,16 +28,14 @@ export default function ShoppingCart({ state }) {
   };
 
   const getData = async () => {
-    let data = await ViewProduct();
+    let data = await viewCart();
     if (data.length >= 1) {
       data = data.reverse();
       setButtonShooping(true);
       setLoader(false);
     } else {
       setButtonShooping(false);
-      setTimeout(() => {
-        setLoader(false);
-      }, 2500);
+      setLoader(false);
     }
     setProductCart(data);
     console.log(data);
@@ -44,13 +43,10 @@ export default function ShoppingCart({ state }) {
 
   useEffect(() => {
     setIsOpen(true);
-
     getData();
   }, []);
 
   const navigate = useNavigate();
-
-  const url = "https://mugishop-miniproyecto.s3.amazonaws.com";
 
   return (
     <div className="main_cart_container" onClick={handleClick}>
@@ -64,7 +60,7 @@ export default function ShoppingCart({ state }) {
               </button>
             </div>
             <div className="main_product_cart_container">
-              {Loader ? (
+              {loader ? (
                 <div className="loader_cart">
                   <CircleLoader />
                 </div>
@@ -77,7 +73,10 @@ export default function ShoppingCart({ state }) {
                           <div className="product_cart">
                             <div className="container_image_product_cart">
                               <img
-                                src={url + p.product_img}
+                                src={
+                                  import.meta.env.VITE_IMAGES_URL +
+                                  p.product_img
+                                }
                                 alt={p.product_img}
                               />
                             </div>
@@ -89,7 +88,7 @@ export default function ShoppingCart({ state }) {
                               <AiFillDelete
                                 className="garbage"
                                 onClick={() => {
-                                  DeleteProduct(p.id, setProductCart),
+                                  deleteCart(p.id, setProductCart),
                                     toast.error("eliminated"),
                                     getData(),
                                     setLoader(true);
@@ -101,7 +100,7 @@ export default function ShoppingCart({ state }) {
                         </div>
                       ))}
                       <div className="button_shooping_container">
-                        {ButtonShooping ? (
+                        {buttonShooping ? (
                           <button onClick={() => navigate("/payment")}>
                             Shooping
                           </button>

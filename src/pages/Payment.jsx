@@ -1,41 +1,27 @@
 import { React, useState, useEffect } from "react";
-import "../../styleSheets/Payment.css";
-import { ViewProduct } from "../../utils/CartFunctions";
+import "../styleSheets/Payment.css";
+import { viewCart } from "../services/RequestCart/viewCart";
 import { CircleLoader } from "react-spinners";
+import { fetchPaymentLink } from "../services/RequestPayment/paymentLink";
 
 export default function Payment() {
-  const [PaymentProduct, setPaymentProduct] = useState([]);
-  const [Loader, setLoader] = useState(true);
-  const [PaymentLink, setPaymentLink] = useState(undefined);
-  const [ToTalPriceProduct, setTotalPriceProduct] = useState(0);
+  const [paymentProduct, setPaymentProduct] = useState([]);
+  const [loader, setLoader] = useState(true);
+  const [paymentLink, setPaymentLink] = useState(undefined);
+  const [toTalPriceProduct, setTotalPriceProduct] = useState(0);
 
   const getData = async (e) => {
-    let data = await ViewProduct();
+    let data = await viewCart();
     if (data.length >= 1) {
       data = data.reverse();
     }
     setPaymentProduct(data);
     console.log("payment", data);
   };
-
-  const getLink = async () => {
-    const token = sessionStorage.getItem("token");
-    const url = "http://localhost:8000/api/create-order";
-    const PayLink = await fetch(url, {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await PayLink.json();
-    setPaymentLink(data.link_pay);
-    setLoader(false);
-  };
   
-  const TotalPrice = () =>{
+  const totalPrice = () =>{
     let total = 0;
-    PaymentProduct.map((item) => {
+    paymentProduct.map((item) => {
       total = total + item.price;
       });
       setTotalPriceProduct(total);
@@ -43,14 +29,12 @@ export default function Payment() {
 
   useEffect(() => {
     getData();
-    getLink();
+    fetchPaymentLink(setPaymentLink, setLoader)
   }, []);
 
   useEffect(() =>{
-    TotalPrice();
-  },[PaymentProduct])
-
-  const url = "https://mugishop-miniproyecto.s3.amazonaws.com";
+    totalPrice();
+  },[paymentProduct])
 
   return (
     <div className="main_container_payment">
@@ -62,10 +46,10 @@ export default function Payment() {
             <p>Price</p>
           </div>
         </div>
-        {PaymentProduct.map((p) => (
+        {paymentProduct.map((p) => (
           <div className="body_payment_product" key={p.id}>
             <div className="payment_product">
-              <img src={url + p.product_img} alt="" />
+              <img src={import.meta.env.VITE_IMAGES_URL + p.product_img} alt="" />
               <div className="info_pay_product">
                 <p>{p.product}</p>
                 <p>${p.price}</p>
@@ -80,10 +64,10 @@ export default function Payment() {
         <div className="price_payment">
           <div className="total_price_payment">
             <p>Total price:</p>
-            <p> ${ToTalPriceProduct}</p>
+            <p> ${toTalPriceProduct}</p>
           </div>
-          {PaymentLink != undefined ? (
-            <a href={PaymentLink}>PayNow</a>
+          {paymentLink != undefined ? (
+            <a href={paymentLink}>PayNow</a>
           ) : (
             <a href="">
               <CircleLoader className="pay_loader" color="#EDEDED" size={20} />

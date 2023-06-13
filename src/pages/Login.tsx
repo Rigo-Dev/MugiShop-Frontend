@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../styleSheets/Login.css"
+import "../styleSheets/Login.css"
 import { Nav } from '../components/Nav'
 import { useForm } from 'react-hook-form'
 import { ZodType, z } from 'zod'
@@ -23,7 +23,7 @@ export function Login() {
     const { register, handleSubmit, formState: {errors} } = useForm<FormData>({resolver: zodResolver(schema)})
 
     async function submitData(data: FormData) {
-        const res = await fetch("http://localhost:8000/api/login", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
             method: "POST",
             headers: {
             "Content-Type": "application/json"

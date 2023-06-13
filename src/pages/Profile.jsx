@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import "../../styleSheets/Profile.css";
+import "../styleSheets/Profile.css";
 import { Nav } from "../components/Nav";
-import { FechtProfile } from "../../utils/ProfileFunctions";
+import { fetchUserData } from "../services/RequestProfile/fechtUserData";
+import { fecthImagesUser } from "../services/RequestProfile/fecthImagesUser";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDownload } from "react-icons/ai";
 
 export function Profile() {
-  const [DataProfile, setDataProfile] = useState([]);
-  const [images, setImages] = useState([]);
+  const [dataProfile, setDataProfile] = useState([]);
+  const [imagesUser, setImages] = useState([]);
 
-  const getData = async () => {
-    const data = await FechtProfile();
+  const getDataUser = async () => {
+    const data = await fetchUserData();
     console.log(data);
     setDataProfile(data);
   };
@@ -30,25 +31,14 @@ export function Profile() {
   }
 
   const getImages = async () => {
-    const token = sessionStorage.getItem("token");
-    const res = await fetch("http://localhost:8000/api/my-nfts", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json",
-      },
-    });
-    const img = await res.json();
-    setImages(img.nfts);
-    console.log(img);
+    const data = await fecthImagesUser()
+    setImages(data.nfts);
   };
 
   useEffect(() => {
-    getData();
+    getDataUser();
     getImages();
   }, []);
-
-  const url = "https://mugishop-miniproyecto.s3.amazonaws.com";
 
   return (
     <div className="main_container_perfil">
@@ -57,12 +47,12 @@ export function Profile() {
       </>
       <div className="container_perfil">
         <div className="container_info_perfil">
-          <div className="info_perfil">
+          <div className="info_perfil" onClick={() => console.log(import.meta.env.VITE_IMAGES_URL)}>
             <img src="public/images/foto1.jpg" alt="" className="image_user" />
             <p>
-              {DataProfile.first_name} {DataProfile.last_name}
+              {dataProfile.first_name} {dataProfile.last_name}
             </p>
-            <p>{DataProfile.email}</p>
+            <p>{dataProfile.email}</p>
             <div className="button_profile">
               <NavLink to={"/editprofile"}>
                 <button className="button">Editar Perfil</button>
@@ -70,18 +60,20 @@ export function Profile() {
             </div>
           </div>
           <div className="ntf_user_container">
-            {images.length >= 1
-              ? images.map((p) => (
+            {imagesUser.length >= 1
+              ? imagesUser.map((p) => (
                   <div className="columns_profile" key={p.id}>
                     <div className="nft_user">
-                      <img className="image" src={url + p.image} alt="" />
+                      <img className="image" src={import.meta.env.VITE_IMAGES_URL + p.image} alt="" />
                       <div className="download_option_container">
                         <div className="download_option">
-                          <AiOutlineDownload className="button_download" onClick={() => dowloadImg(url + p.imagehd)}>
+                          <AiOutlineDownload
+                            className="button_download"
+                            onClick={() => dowloadImg(import.meta.env.VITE_IMAGES_URL + p.imagehd)}
+                          >
                             Dowload
                           </AiOutlineDownload>
                         </div>
-
                       </div>
                     </div>
                   </div>

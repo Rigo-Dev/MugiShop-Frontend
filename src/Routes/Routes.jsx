@@ -6,12 +6,11 @@ import { Login } from "../pages/Login";
 import { NotFound } from "../pages/NotFound";
 import { Profile } from "../pages/Profile";
 import { EditProfile } from "../pages/EditProfile";
-import { ProtectedRoutes } from "../../utils/ProtectedRoutes";
+import { ProtectedRoutes } from "./ProtectedRoutes";
 import Payment from "../pages/Payment";
 
 export function Rout() {
   return (
-    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" Component={Home}></Route>
@@ -27,6 +26,5 @@ export function Rout() {
           <Route path="*" Component={NotFound}></Route>
         </Routes>
       </BrowserRouter>
-    </div>
   );
 }
