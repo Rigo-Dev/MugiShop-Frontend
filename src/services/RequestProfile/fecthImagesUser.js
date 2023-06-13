@@ -9,6 +9,5 @@ export async function fecthImagesUser() {
     },
   });
   const img = await res.json();
-  console.log(img);
   return img;
 }

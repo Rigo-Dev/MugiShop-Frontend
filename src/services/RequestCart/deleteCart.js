@@ -7,7 +7,6 @@ export async function deleteCart(id, setData) {
     const data = await res.json();
     const dataProductCart = await viewCart();
     setData(dataProductCart);
-    console.log(data); 
   } catch (error) {
     throw error
   }

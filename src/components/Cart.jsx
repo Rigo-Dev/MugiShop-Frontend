@@ -37,7 +37,6 @@ export default function ShoppingCart({ state }) {
       setLoader(false);
     }
     setProductCart(data);
-    console.log(data);
   };
 
   useEffect(() => {

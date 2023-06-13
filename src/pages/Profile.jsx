@@ -12,7 +12,6 @@ export function Profile() {
 
   const getDataUser = async () => {
     const data = await fetchUserData();
-    console.log(data);
     setDataProfile(data);
   };
 
@@ -25,13 +24,11 @@ export function Profile() {
         a.href = window.URL.createObjectURL(blob);
         a.download = "image.png";
         a.click();
-
-        console.log(blob);
       });
   }
 
   const getImages = async () => {
-    const data = await fecthImagesUser()
+    const data = await fecthImagesUser();
     setImages(data.nfts);
   };
 
@@ -47,7 +44,7 @@ export function Profile() {
       </>
       <div className="container_perfil">
         <div className="container_info_perfil">
-          <div className="info_perfil" onClick={() => console.log(import.meta.env.VITE_IMAGES_URL)}>
+          <div className="info_perfil">
             <img src="public/images/foto1.jpg" alt="" className="image_user" />
             <p>
               {dataProfile.first_name} {dataProfile.last_name}
@@ -64,12 +61,20 @@ export function Profile() {
               ? imagesUser.map((p) => (
                   <div className="columns_profile" key={p.id}>
                     <div className="nft_user">
-                      <img className="image" src={import.meta.env.VITE_IMAGES_URL + p.image} alt="" />
+                      <img
+                        className="image"
+                        src={import.meta.env.VITE_IMAGES_URL + p.image}
+                        alt=""
+                      />
                       <div className="download_option_container">
                         <div className="download_option">
                           <AiOutlineDownload
                             className="button_download"
-                            onClick={() => dowloadImg(import.meta.env.VITE_IMAGES_URL + p.imagehd)}
+                            onClick={() =>
+                              dowloadImg(
+                                import.meta.env.VITE_IMAGES_URL + p.imagehd
+                              )
+                            }
                           >
                             Dowload
                           </AiOutlineDownload>

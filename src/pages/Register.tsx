@@ -40,16 +40,11 @@ export function Register() {
 
     const userDataRegister = await res.json();
 
-    console.log(userDataRegister);
-
     if (userDataRegister.access_token) {
-      console.log("Registrado");
       navigate("/");
       sessionStorage.setItem("token", userDataRegister.access_token);
     } else {
       Object.keys(userDataRegister.errors).forEach((e) => {
-        console.log(e, userDataRegister.errors[e]);
-
         userDataRegister.errors[e].forEach((error) => {
           toast.error(error);
         });

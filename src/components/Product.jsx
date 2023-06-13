@@ -11,14 +11,11 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct,op
     if (getToken()) {
       const messageError = await addCart(idProduct);
 
-      console.log(messageError);
 
       if (messageError.error !== undefined) {
         toast.error(messageError.error);
-        console.log(messageError, "Error");
       } else {
         toast.success(messageError.message);
-        console.log(messageError);
       }
     } else {
       toast.error("Need Login");

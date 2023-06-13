@@ -16,25 +16,24 @@ export default function Payment() {
       data = data.reverse();
     }
     setPaymentProduct(data);
-    console.log("payment", data);
   };
-  
-  const totalPrice = () =>{
+
+  const totalPrice = () => {
     let total = 0;
     paymentProduct.map((item) => {
       total = total + item.price;
-      });
-      setTotalPriceProduct(total);
-  }
+    });
+    setTotalPriceProduct(total);
+  };
 
   useEffect(() => {
     getData();
-    fetchPaymentLink(setPaymentLink, setLoader)
+    fetchPaymentLink(setPaymentLink, setLoader);
   }, []);
 
-  useEffect(() =>{
+  useEffect(() => {
     totalPrice();
-  },[paymentProduct])
+  }, [paymentProduct]);
 
   return (
     <div className="main_container_payment">
@@ -49,7 +48,10 @@ export default function Payment() {
         {paymentProduct.map((p) => (
           <div className="body_payment_product" key={p.id}>
             <div className="payment_product">
-              <img src={import.meta.env.VITE_IMAGES_URL + p.product_img} alt="" />
+              <img
+                src={import.meta.env.VITE_IMAGES_URL + p.product_img}
+                alt=""
+              />
               <div className="info_pay_product">
                 <p>{p.product}</p>
                 <p>${p.price}</p>
@@ -59,7 +61,7 @@ export default function Payment() {
           </div>
         ))}
       </div>
-      
+
       <div className="price_payment_container">
         <div className="price_payment">
           <div className="total_price_payment">
