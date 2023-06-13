@@ -20,8 +20,7 @@ export default function ShoppingCart({ state }) {
     if (
       node.className.baseVal == "btn-xmark" ||
       node.className.baseVal == "xmark" ||
-      node.className == "cart_open" ||
-      node.tagName == "path"
+      node.className == "cart_open"
     ) {
       state(false);
     }
