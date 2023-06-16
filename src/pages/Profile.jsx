@@ -58,7 +58,7 @@ export function Profile() {
             {images.length >= 1
               ? images.map((p) => (
                   <div className="columns_profile" key={p.id}>
-                    <img className="image" src={url + p.imagehd} alt="" />
+                    <img className="image" src={url + p.image} alt="" />
                   </div>
                 ))
               : null}
