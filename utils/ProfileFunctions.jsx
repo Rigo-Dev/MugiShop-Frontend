@@ -1,6 +1,5 @@
-const token = sessionStorage.getItem("token")
-
 export async function FechtProfile(){
+    const token = sessionStorage.getItem("token")
     const res = await fetch("http://localhost:8000/api/profile",{
         method: "GET",
         headers:{

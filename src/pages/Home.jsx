@@ -3,17 +3,19 @@ import "../../styleSheets/Home.css"
 import { Products } from '../components/Product';
 import { Nav } from '../components/Nav';
 import { Modal } from '../components/Modal';
-
+import { CircleLoader } from "react-spinners";
 
 export function Home() { 
   const [products, setProducts] = useState([]);
   const [Open, setOpen] = useState(false)
   const [dataModal, setDataModal] = useState(null)
+  const [Loader, setLoader] = useState(true)
 
   const Fechtproduct = async () =>{
     const url = await fetch('http://localhost:8000/api/products')
     const data  = await url.json()
     setProducts(data)
+    setLoader(false)
   }
 
   const OpenModal = (img, name, price, id)=>{
@@ -42,7 +44,11 @@ export function Home() {
       <Modal Open={Open} CloseModal={() => CloseModal()} dataModal={dataModal}/>
 
         <Nav setProducts={setProducts}/>   
-
+          {Loader ? 
+            <div className='loader_home_container'>
+              <CircleLoader color="#2c2c2c" size={40}/> 
+            </div>
+            :             
             <div className='product_home_container'>
                 {products.map((p) => (
                   <div className='columns' key={p.id}>
@@ -55,7 +61,7 @@ export function Home() {
                     />
                   </div>
                 ))}
-            </div>
+            </div>}
       </div>              
     </>
   )

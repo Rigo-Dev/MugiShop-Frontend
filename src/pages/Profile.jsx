@@ -16,18 +16,17 @@ const getData = async () =>{
   setDataProfile(data)
 }
 
-const token = sessionStorage.getItem("token")
 
 const getImages = async () =>{
-  const url = "http://localhost:8000/api/my-nfts"
-  const data = await fetch(url,{ 
+  const token = sessionStorage.getItem("token")
+  const res = await fetch("http://localhost:8000/api/my-nfts",{ 
     method: "GET",
     headers: {
-    Authorization: "Bearer " + token,
-    "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
     }
   },)
-  const img = await data.json()
+  const img = await res.json()
   setImages(img)
   console.log(images)
 }
@@ -51,7 +50,6 @@ const url = "https://mugishop-miniproyecto.s3.amazonaws.com"
                     <p>{DataProfile.first_name} {DataProfile.last_name}</p>
                     <p>{DataProfile.email}</p>
                     <div className='button_profile'>
-                      <button className="button">Compartir</button>
                       <NavLink to={'/editprofile'}>
                         <button className="button">Editar Perfil</button>
                       </NavLink>

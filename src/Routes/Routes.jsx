@@ -6,7 +6,7 @@ import { Login } from '../pages/Login';
 import { NotFound } from '../pages/NotFound';
 import { Profile } from '../pages/Profile';
 import { EditProfile } from '../pages/EditProfile';
-import { ConfirmUserToken } from '../../utils/ConfirmUserToken';
+import { ProtectedRoutes } from '../../utils/ProtectedRoutes';
 import Payment from '../pages/Payment';
 
 export function Rout() {
@@ -20,13 +20,12 @@ return (
                     <Route path='/login' Component={Login}></Route> 
 
                 //! ESTA PARTE ES LA QUE PROTEGE LA RUTAL DEL PERFIL SI NO ESTA LOGUEADO NO LO DEJA ENTRAR
-                <Route element={<ConfirmUserToken />}>
+                <Route element={<ProtectedRoutes />}>
                     <Route path='/profile' Component={Profile} ></Route>
+                    <Route path='/editprofile' Component={EditProfile}></Route>
+                    <Route path='/payment' Component={Payment}></Route>
                 </Route>
                 //! --------------------------------------------------------------------------------------
-
-                <Route path='/editprofile' Component={EditProfile}></Route>
-                <Route path='/payment' Component={Payment}></Route>
                 <Route path='*' Component={NotFound}></Route>
             </Routes>
         </BrowserRouter>    

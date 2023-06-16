@@ -15,11 +15,12 @@ export function Products({ nameProduct, imageProduct, idProduct, priceProduct, O
 
       console.log(messageError);
 
-      if(messageError.error != undefined){
+      if(messageError.error !== undefined){
         toast.error(messageError.error)
-        return
+        console.log(messageError, "Error");
       }else{
         toast.success(messageError.message)
+        console.log(messageError);
       }
 
     }else{
