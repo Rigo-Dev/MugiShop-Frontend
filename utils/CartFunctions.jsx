@@ -1,6 +1,6 @@
 //! FUNCION PARA AGREGAR PRODUCTOS AL CARRITO
 export async function AddProduct(id) {
-  const token = sessionStorage.getItem("token")
+  const token = sessionStorage.getItem("token");
   const res = await fetch("http://localhost:8000/api/cart", {
     method: "POST",
     headers: {
@@ -10,19 +10,18 @@ export async function AddProduct(id) {
     body: JSON.stringify({
       product: id,
     }),
-  }
-  );
+  });
   const PostProductData = await res.json();
   // console.log("Token" + token);
   console.log(token);
   console.log(PostProductData);
-  return PostProductData
+  return PostProductData;
 }
 //!--------------------------------------------
 
 //! FUNCION PARA VER LOS PRODUCTOS EN EL CARRITO
 export async function ViewProduct() {
-  const token = sessionStorage.getItem("token")
+  const token = sessionStorage.getItem("token");
   const res = await fetch("http://localhost:8000/api/cart", {
     method: "GET",
     headers: {
@@ -37,7 +36,7 @@ export async function ViewProduct() {
 
 //! FUNCION PARA ELIMINAR LOS PRODUCTOS DEL CARRITO
 export async function DeleteProduct(id, setData) {
-  const token = sessionStorage.getItem("token")
+  const token = sessionStorage.getItem("token");
   const res = await fetch("http://localhost:8000/api/cart", {
     method: "DELETE",
     headers: {

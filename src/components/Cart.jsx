@@ -11,6 +11,7 @@ export default function ShoppingCart({ state }) {
   const [productCart, setProductCart] = useState([]);
   const [ButtonShooping, setButtonShooping] = useState(false);
   const [Loader, setLoader] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = (e) => {
     let node = e.target;
@@ -27,16 +28,17 @@ export default function ShoppingCart({ state }) {
       setLoader(false);
     } else {
       setButtonShooping(false);
-      setTimeout(() =>{
+      setTimeout(() => {
         setLoader(false);
-      },2500)
+      }, 2500);
     }
     setProductCart(data);
     console.log(data);
   };
 
-
   useEffect(() => {
+    setIsOpen(true);
+
     getData();
   }, []);
 
@@ -47,14 +49,13 @@ export default function ShoppingCart({ state }) {
   return (
     <div className="main_cart_container" onClick={handleClick}>
       <div className="cart_container">
-        <div className="cart_open">
+        <div className={isOpen ? "cart_open" : "cart_close"}>
           <div className="add_cart_product">
             <div className="header_cart">
               <h1>Shopping</h1>
               <HiOutlineXMark className="xmark" />
             </div>
             <div className="main_product_cart_container">
-
               {Loader ? (
                 <div className="loader_cart">
                   <CircleLoader />
@@ -64,52 +65,50 @@ export default function ShoppingCart({ state }) {
                   {productCart.length > 0 ? (
                     <div>
                       {productCart.map((p) => (
-                          <div className="product_cart_container" key={p.id}>
-                            <div className="product_cart">
-                              <div className="container_image_product_cart">
-                                <img
-                                  src={url + p.product_img}
-                                  alt={p.product_img}
-                                />
-                              </div>
-                              <div className="container_info_product_cart">
-                                <div className="info_product_cart">
-                                  <p className="name">{p.product}</p>
-                                  <p className="price">$11</p>
-                                </div>
-                                <AiFillDelete
-                                  className="garbage"
-                                  onClick={() => {
-                                    DeleteProduct(p.id, setProductCart),
-                                      toast.error("eliminated"),
-                                      getData(),
-                                      setLoader(true);
-                                  }}
-                                />
-                              </div>
+                        <div className="product_cart_container" key={p.id}>
+                          <div className="product_cart">
+                            <div className="container_image_product_cart">
+                              <img
+                                src={url + p.product_img}
+                                alt={p.product_img}
+                              />
                             </div>
-                            <hr />
+                            <div className="container_info_product_cart">
+                              <div className="info_product_cart">
+                                <p className="name">{p.product}</p>
+                                <p className="price">$11</p>
+                              </div>
+                              <AiFillDelete
+                                className="garbage"
+                                onClick={() => {
+                                  DeleteProduct(p.id, setProductCart),
+                                    toast.error("eliminated"),
+                                    getData(),
+                                    setLoader(true);
+                                }}
+                              />
+                            </div>
                           </div>
-                      ))}
-                        <div className="button_shooping_container">
-                          {ButtonShooping ? (
-                            <button onClick={() => navigate("/payment")}>
-                              Shooping
-                            </button>
-                          ) : (
-                            false
-                          )}
+                          <hr />
                         </div>
+                      ))}
+                      <div className="button_shooping_container">
+                        {ButtonShooping ? (
+                          <button onClick={() => navigate("/payment")}>
+                            Shooping
+                          </button>
+                        ) : (
+                          false
+                        )}
+                      </div>
                     </div>
-                  ):(
+                  ) : (
                     <div className="no_product_cart">
                       <p>no product in cart</p>
                     </div>
                   )}
-                  
                 </>
               )}
-
             </div>
           </div>
         </div>
