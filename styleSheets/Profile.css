@@ -54,15 +54,63 @@
   }
 }
 
-.image_profile {
-  flex-wrap: wrap;
+.ntf_user_container {
   columns: 6 150px;
   margin-bottom: 2rem;
   margin-top: 1.5rem;
   gap: 10px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
 }
 
 .columns_profile {
   height: 100%;
   margin: 1rem 0.5rem 1.5rem 0.2rem;
+  position: relative;
+}
+
+.image{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  margin-bottom: -0.5rem;
+  margin-top: -1rem;
+  object-fit: contain;
+}
+
+.nft_user{
+  width: 100%;
+  height: 100%;
+}
+
+.nft_user:hover .download_option_container{
+  visibility: visible;
+}
+
+.download_option_container{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  backdrop-filter: blur(o.7px);
+  background-color: rgba(103, 103, 103, 0.529);
+  border-radius: 15px;
+  visibility: hidden;
+}
+
+.download_option{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+}
+
+.button_download{
+  cursor: pointer;
+  color: var(--very-light);
 }

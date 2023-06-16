@@ -1,4 +1,3 @@
-//! FUNCION PARA AGREGAR PRODUCTOS AL CARRITO
 export async function AddProduct(id) {
   const token = sessionStorage.getItem("token");
   const res = await fetch("http://localhost:8000/api/cart", {
@@ -17,9 +16,7 @@ export async function AddProduct(id) {
   console.log(PostProductData);
   return PostProductData;
 }
-//!--------------------------------------------
 
-//! FUNCION PARA VER LOS PRODUCTOS EN EL CARRITO
 export async function ViewProduct() {
   const token = sessionStorage.getItem("token");
   const res = await fetch("http://localhost:8000/api/cart", {
@@ -32,9 +29,7 @@ export async function ViewProduct() {
   const data = await res.json();
   return data;
 }
-//!----------------------------------------------
 
-//! FUNCION PARA ELIMINAR LOS PRODUCTOS DEL CARRITO
 export async function DeleteProduct(id, setData) {
   const token = sessionStorage.getItem("token");
   const res = await fetch("http://localhost:8000/api/cart", {
@@ -54,4 +49,3 @@ export async function DeleteProduct(id, setData) {
 
   console.log(data);
 }
-//!-----------------------------------------------

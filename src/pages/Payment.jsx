@@ -7,6 +7,7 @@ export default function Payment() {
   const [PaymentProduct, setPaymentProduct] = useState([]);
   const [Loader, setLoader] = useState(true);
   const [PaymentLink, setPaymentLink] = useState(undefined);
+  const [ToTalPriceProduct, setTotalPriceProduct] = useState(0);
 
   const getData = async (e) => {
     let data = await ViewProduct();
@@ -17,11 +18,8 @@ export default function Payment() {
     console.log("payment", data);
   };
 
-  ViewProduct();
-
-  const token = sessionStorage.getItem("token");
-
   const getLink = async () => {
+    const token = sessionStorage.getItem("token");
     const url = "http://localhost:8000/api/create-order";
     const PayLink = await fetch(url, {
       method: "POST",
@@ -34,11 +32,23 @@ export default function Payment() {
     setPaymentLink(data.link_pay);
     setLoader(false);
   };
+  
+  const TotalPrice = () =>{
+    let total = 0;
+    PaymentProduct.map((item) => {
+      total = total + item.price;
+      });
+      setTotalPriceProduct(total);
+  }
 
   useEffect(() => {
     getData();
     getLink();
   }, []);
+
+  useEffect(() =>{
+    TotalPrice();
+  },[PaymentProduct])
 
   const url = "https://mugishop-miniproyecto.s3.amazonaws.com";
 
@@ -58,19 +68,19 @@ export default function Payment() {
               <img src={url + p.product_img} alt="" />
               <div className="info_pay_product">
                 <p>{p.product}</p>
-                <p>$11</p>
+                <p>${p.price}</p>
               </div>
             </div>
             <hr />
           </div>
         ))}
       </div>
-
+      
       <div className="price_payment_container">
         <div className="price_payment">
           <div className="total_price_payment">
             <p>Total price:</p>
-            <p>$100</p>
+            <p> ${ToTalPriceProduct}</p>
           </div>
           {PaymentLink != undefined ? (
             <a href={PaymentLink}>PayNow</a>

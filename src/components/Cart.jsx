@@ -13,9 +13,15 @@ export default function ShoppingCart({ state }) {
   const [Loader, setLoader] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = (e) => {
+  const handleClick = (e, xmark = false) => {
     let node = e.target;
-    if (node.className.baseVal == "xmark" || node.className == "cart_open") {
+
+    if (
+      node.className.baseVal == "btn-xmark" ||
+      node.className.baseVal == "xmark" ||
+      node.className == "cart_open" ||
+      node.tagName == "path"
+    ) {
       state(false);
     }
   };
@@ -53,7 +59,9 @@ export default function ShoppingCart({ state }) {
           <div className="add_cart_product">
             <div className="header_cart">
               <h1>Shopping</h1>
-              <HiOutlineXMark className="xmark" />
+              <button className="btn-xmark">
+                <HiOutlineXMark className="xmark" />
+              </button>
             </div>
             <div className="main_product_cart_container">
               {Loader ? (

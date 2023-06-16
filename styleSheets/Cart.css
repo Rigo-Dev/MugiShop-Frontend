@@ -23,7 +23,10 @@
 
   transition: all 100ms;
 }
-
+.btn-xmark {
+  border: none;
+  background: none;
+}
 .cart_close {
   font-size: 2rem;
 
