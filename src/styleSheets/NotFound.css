@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  width: 95%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  height: 100vh;
+}
+.nf-404 {
+  font-size: 9rem;
+}
+
+.Title {
+  font-size: 3rem;
+  font-weight: lighter;
+  color: #555555;
+}
+
+.mesasge-notfound {
+  font-size: 1rem;
+  color: #666666;
+}
+
+.btn-go_home_page {
+  display: inline-block;
+  padding: 0.5rem;
+  color: var(--secondary);
+
+  transition: color 300ms;
+}
+.btn-go_home_page:hover {
+  color: #da5107;
+}

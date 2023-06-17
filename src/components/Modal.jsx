@@ -1,34 +1,17 @@
 import React from "react";
-import "../../styleSheets/Modal.css";
+import "../styleSheets/Modal.css";
 import { HiXMark } from "react-icons/hi2";
-import { Toaster, toast } from "react-hot-toast";
-import { AddProduct } from "../../utils/CartFunctions";
+import { Toaster } from "react-hot-toast";
+import { addModalCart } from "../services/RequestCart/addModalProduct";
 
-export function Modal({ Open, CloseModal, dataModal }) {
-  if (!Open) return null;
+export function Modal({ open, closeModal, dataModal }) {
+  if (!open) return null;
 
-  const token = sessionStorage.getItem("token");
-
-  const handleShoppingClick = async () => {
-    if (token) {
-      const message = await AddProduct(dataModal.id);
-      console.log(dataModal.id);
-      console.log(message);
-
-      if (message.error != undefined) {
-        toast.error(message.error);
-        return;
-      }
-      toast.success(message.message);
-    } else {
-      toast.error("Need Login");
-    }
-  };
   return (
     <div className="container_modal">
       <div className="modal">
         <div className="modal_header">
-          <button className="modal_btn_close" onClick={CloseModal}>
+          <button className="modal_btn_close" onClick={closeModal}>
             <HiXMark />
           </button>
         </div>
@@ -43,7 +26,9 @@ export function Modal({ Open, CloseModal, dataModal }) {
             </div>
             <div className="modal_btn_shoopin_container">
               <div className="modal_btn_shoopin">
-                <button onClick={handleShoppingClick}>Add to cart</button>
+                <button onClick={() => addModalCart(dataModal.id)}>
+                  Add to cart
+                </button>
               </div>
             </div>
           </div>
